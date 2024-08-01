@@ -76,6 +76,10 @@
 |------------------------------------+-----------+-----|
 |                                    |           | 100 |
 #+TBLFM: @7$3=vsum(@I..II)
+
+** Instructors
+[[https://bvraghav.com/][Raghav]], Namrata Dimari
+
 * Curriculum
 ** Course Objectives
 Detailed study of graphics, 2D/3D Transformations,
