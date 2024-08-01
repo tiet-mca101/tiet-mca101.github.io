@@ -65,6 +65,17 @@
 | Post Diwali until EST       | 4 | 13 | 5 |
 |-----------------------------+---+----+---|
 
+** Evaluation
+|                                    | Date      |  MM |
+|------------------------------------+-----------+-----|
+| MST                                | TBA       |  25 |
+| EST                                | TBA       |  35 |
+| LE1 (Lab Assignment)               | Sep 9–13  |  10 |
+| LE2 (Lab Assignment)               | Nov 18–22 |  10 |
+| LE3 (Project in group of 2/3 each) | Nov 4–8   |  20 |
+|------------------------------------+-----------+-----|
+|                                    |           | 100 |
+#+TBLFM: @7$3=vsum(@I..II)
 * Curriculum
 ** Course Objectives
 Detailed study of graphics, 2D/3D Transformations,
