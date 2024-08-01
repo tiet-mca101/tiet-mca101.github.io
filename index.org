@@ -50,7 +50,7 @@
 
 * Introduction
 
-[[file:mca101-syllabus.pdf][Syllabus [PDgF]​]]
+[[file:mca101-syllabus.pdf][Syllabus [PDF]​]]
 
 ** Academic Calendar
 [[file:image/academic-calendar.png]]
