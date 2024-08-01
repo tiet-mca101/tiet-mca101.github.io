@@ -138,3 +138,7 @@ representations and visualisation.
 
 * Schedule of Practicals
 TBA
+
+* Resources
+1. [[file:opengl45-quick-reference-card.pdf][OpenGL Cheat Sheet]]
+2. [[file:webgl20-reference-guide.pdf][WebGL Cheat Sheet]]
