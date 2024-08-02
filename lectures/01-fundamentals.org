@@ -1,0 +1,251 @@
+#+startup: beamer
+#+title: mca101 : computer graphics
+#+email: bv.raghav@thapar.edu
+#+options: H:3 toc:nil author:nil date:nil
+
+#+include: preamble.org
+
+
+* history
+
+** Applications
+
+*** sketchpad 1960
+\centering
+
+#+attr_latex: :width 0.5\linewidth
+[[file:images/sutherland-sketchpad.jpg]]
+/Image Courtesy: Youtube/
+
+[[https://www.youtube.com/watch?v=ztRtFEwyXnY][(Youtube)]]
+
+*** Flatland 1999
+#+caption: Flatland [[cite:&MIEL99]]
+#+attr_latex: :width 0.6\linewidth
+[[file:images/flatland-1999.png]]
+
+*** plushie 2007
+\centering
+
+#+caption: Plushie [[cite:&MI07]]
+#+attr_latex: :width 0.6\linewidth
+[[file:images/plushie-2007.jpg]]
+
+[[https://www.youtube.com/watch?v=rbQWxL-_8LU][(Youtube)]]
+
+*** cityengine esri 2012
+\centering
+
+#+attr_latex: :width 0.8\linewidth
+[[file:images/cityengine-esri.jpg]]
+/Image Courtesy: Youtube/
+
+[[https://www.youtube.com/watch?v=aFRqSJFp-I0][(Youtube)]], [[https://www.youtube.com/watch?v=jsFztFXiPTM][Peter Wonka @3DGV]]
+
+** Display
+
+*** cathode ray tube
+\centering
+
+#+attr_latex: :width 0.6\linewidth
+[[file:images/crt.png]]
+/Image Courtesy: [[https://en.wikipedia.org/wiki/File:Cathode_ray_Tube.PNG][Wikipedia]]/
+
+Monochrome (Raster), Colour (Raster), Direct-View
+Bistable Storage (Vector)
+
+*** nixie Tube
+(Variant of a Neon Lamp)
+\centering
+
+#+attr_latex: :width 0.6\linewidth
+[[file:images/Nixie2.jpg]]
+/Image Courtesy: [[https://en.wikipedia.org/wiki/Nixie_tube][Wikipedia]]/
+
+*** flip-disc display
+\centering
+
+#+attr_latex: :width 0.8\linewidth
+[[file:images/Changi-T2-Flipboard-2.jpg]]
+/Image Courtesy: [[https://mainlymiles.com/2020/01/17/changis-iconic-flip-board-displays-to-go-as-terminal-2-revamp-gets-underway/][Web]]/
+
+*** Recently
+
++ LCD
++ Plasma (1995)
++ LED
++ OLED
++ AMOLED
++ E-Ink (Kindle)
+
+** Print
+
+*** raster
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: 0.5
+:END:
+Prehistoric, Ancient & Medieval
++ Clay Tablets 
++ Wood Block Printing
++ Stencils/ Masks
++ Seals and Stamps
++ Lithography
++ Flat-bed Printing Press
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .5
+:END:
+Modern
++ Rotary Printing Press 
++ Offset Press
++ Screenprinting
++ Dot matrix printing (DMP)
++ Thermal Printing (Thermochromic)
++ Laser Printing
+
+*** vector
+\centering
+
+#+attr_latex: :width 0.6\linewidth
+[[file:images/plotter.jpg]]
+/Image Courtesy: [[https://i.ytimg.com/vi/3ohDaX4uxKY/maxresdefault.jpg][Youtube]]/
+
+[[https://youtu.be/nMt5Dw04XhY][Can I teach a robot to replicate a line art?]]
+[[cite:&VKN20]]
+
+* constraint of the real-time
+
+*** real time
+
++ *{{{sc(throughput)}}}* $>=17$ frames per second (FPS);
++ *{{{sc(refresh rate)}}}* $>=24$ Hz;
+
+*** resolution
+
+A target of 24 FPS, will leave per pixel computation
+time of,
+
++ $320\times240\approx77000$ px $\to 543$ ns
++ $640\times480\approx0.3$ MP $\to 135$ ns
++ $1024\times768\approx0.8$ MP $\to 53$ ns
++ $1366\times768\approx1$ MP $\to 40$ ns
+
+\pause
+
+With a 384 core GPU
+
++ $1440\times900\approx1.3$ MP $\to 12.3$ \mu{}s
++ $1920\times1280\approx2.5$ MP $\to 6.5$ \mu{}s
++ $3072\times1920\approx6$ MP $\to 2.7$ \mu{}s
++ $8192\times4320\approx35$ MP $\to 0.45$ \mu{}s
+* some terminology
+
+*** representation
+The way a concept/ entity is represented in machine
+code. /e.g./
+
++ Colour as *RGB*; is just a mem block of 24-bits;
++ Geometry as *Polygonal Faces*; Array of Vertex Data
+  and Face Relations;
++ Illumination as a physical model;
++ Textures as 2D images;
++ and so forth\ldots
+
+*** transformation
+Changing the view-point
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .5
+:END:
+
+#+caption: User View
+[[file:images/user-view.jpg]]
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .5
+:END:
+#+caption: Camera View
+[[file:images/camera-view.jpg]]
+*** interpolation
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .45
+:END:
+Estimating/ Computing the values in between two states.
+
+/e.g./ \\
+Points on a line segment are intermediate/ interpolated
+states between its two end points.
+
+*** visualisation
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .45
+:END:
+
+To create a visible artefact corresponding to a
+concept.
+
+* the graphics pipeline
+
+*** the graphics pipeline
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .3
+:END:
+
+[[file:images/gl1-pipeline-01.png]]
+***** 
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .45
+:END:
+
+*Vertex Shader*
+
+*Fragment Shader*
+
+
+* references
+:PROPERTIES:
+:UNNUMBERED: t
+:END:
+*** references
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+\printbibliography
+
