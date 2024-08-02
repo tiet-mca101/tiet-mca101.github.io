@@ -141,7 +141,84 @@ representations and visualisation.
 
 
 * Schedule of Practicals
-TBA
+
+** Lab 1
+The fundamentals: Javascript, Git, Markdown.
+
+Prerequisite Installs:
++ Code Editor, eg. [[https://code.visualstudio.com/download][VSCode]], [[https://www.gnu.org/software/emacs/][Emacs]] etc.
++ Node/NPM: [[https://github.com/nvm-sh/nvm][NVM]], [[https://github.com/coreybutler/nvm-windows][NVM4W]], [[https://nodejs.org/en][NodeJS (Direct)]]
++ Git: [[https://git-scm.com/downloads][Git]]
+
+Recommended Installs:
++ WSL2 [[https://learn.microsoft.com/en-us/windows/wsl/][(Windows Subsystem for Linux)]]: Using Linux Shell
+  without leaving the comfort of your Windows install.
+  Remember to specifically download and install WSL2,
+  (and not WSL except if your system hardware demands
+  so).  The section titled, [[https://learn.microsoft.com/en-us/windows/wsl/#get-started][“Get Started,”]] links to
+  installation.
+
+Further Reading:
++ Javascripting: [[https://www.github.com/sethvincent/javascripting][(Workshopper)]] =npm install -g
+  javascripting=, [[https://developer.mozilla.org/en-US/docs/Web/JavaScript][(MDN Tutorials)]]
++ Git: [[https://github.com/jlord/git-it-electron/releases][(Electron App)]], [[https://git-scm.com/doc][(Online Documentation)]]
++ Markdown: [[https://github.com/workshopper/how-to-markdown][(Workshopper)]] =npm install -g
+  how-to-markdown=, [[https://www.markdownguide.org/][Markdown Guide]]
+
+** Lab 2
+Shaders: [[https://github.com/stackgl/shader-school][(Workshopper)]] on GLSL Shaders
+
+** Lab 3
+The WebGL Tutorial: [[https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Using_shaders_to_apply_color_in_WebGL][2D Objects and Colors]], and
+animation.
+
+Further Reading: [[https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial][(MDN Tutorials)]]
+
+** Lab 4
+[[https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Creating_3D_objects_using_WebGL][Tranformations and 3D]]
+
+Further Reading: [[https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial][(MDN Tutorials)]]
+
+** Lab 5
+(Bonus) Geometry (Scene) Authoring using Blender:
+[[https://www.youtube.com/watch?v=Rqhtw7dg6Wk][(Youtube)]]
+
+Prerequisite Installs:
++ Blender: [[https://www.blender.org/download/][(Download)]]
+
+Further Reading:
++ [[https://www.blender.org/support/][Blender Official and Endorsed Support]]
+
+** Lab 6: Eval Week                                                    :TBA:
+LE1: Algo Implementation: Straight Lines and Fills
+
+** Lab 7
+[[https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Using_textures_in_WebGL][Textures]] and its artistic aspect.
+
+** MST
+
+** Lab 8
+[[https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Animating_textures_in_WebGL][More animation: Animating Textures]]
+
+** Lab 9
+[[https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Lighting_in_WebGL][Illumination Models: The Phong Model]]
+
+** Lab 10
+Buffer
+
+** Diwali
+
+** Lab 11: Eval Week                                                   :TBA:
+Project Eval: LE3
+
+** Lab 12
+(Bonus) Scene Graphs
+
+** Lab 13: Eval Week                                                   :TBA:
+LE2: Quantitative Visualisation UI
+
+** Lab 14
+Buffer
 
 * Resources
 
@@ -171,17 +248,16 @@ TBA
 5. Xiang, Z., & Plastock, R. A. (2000). Schaum’s
    outline of computer graphics 2/E. McGraw-Hill
    Education. [[https://books.google.co.in/books?id=7gT1MhI1SbIC][(Google Books)]]
-6. Stack.GL (javascript) : [[https://stack.gl/][(Website)]]
+15. Javascript in general : [[https://nodeschool.io/][Website]]
 7. WebGL2 (javascript) : [[https://github.com/sketchpunk/FunWithWebGL2][(Github)]]
+2. WebGL Cheat Sheet [[file:webgl20-reference-guide.pdf][(PDF)]]
+6. Stack.GL (javascript) : [[https://stack.gl/][(Website)]]
 8. The book of shaders : [[https://thebookofshaders.com/][(Website)]]
-10. ModernGL (python) : [[https://moderngl.readthedocs.io/][Read The Docs]]
-11. Qt Cheatsheet for desktop development : [[https://master.qt.io/learning/developerguides/qtquickdesktop/QtQuickApplicationGuide4Desktop.pdf][(PDF)]]
 12. An essay on interaction design : [[https://uxplanet.org/interaction-design-a-guide-for-beginners-32ff2364b53f][(URL)]]
 13. Linear Algebra and transformations : [[https://www.3blue1brown.com/topics/linear-algebra][(3B1B)]]
 14. Projective Geometry: [[https://www.youtube.com/watch?v=dPWTZSC7PYI][Youtube]], [[https://www.youtube.com/watch?v=mTw3o8-xMIo][Youtube]], [[https://www.youtube.com/watch?v=NYK0GBQVngs][Youtube]].
-15. Javascript in general :
-    [[https://nodeschool.io/][Website]]
 16. Signed Distance Function [[https://gist.github.com/bvraghav/c024e654444bdc345c22a1b411a2e266][Resource Collection]]
 17. Triangle Tesselation [[http://www.cs.cmu.edu/~quake/triangle.html][Project Page]].
-1. [[file:opengl45-quick-reference-card.pdf][OpenGL Cheat Sheet]]
-2. [[file:webgl20-reference-guide.pdf][WebGL Cheat Sheet]]
+1. OpenGL Cheat Sheet [[file:opengl45-quick-reference-card.pdf][(PDF)]]
+11. Qt Cheatsheet for desktop development : [[https://master.qt.io/learning/developerguides/qtquickdesktop/QtQuickApplicationGuide4Desktop.pdf][(PDF)]]
+10. ModernGL (python) : [[https://moderngl.readthedocs.io/][Read The Docs]]
