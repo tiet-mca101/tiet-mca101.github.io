@@ -4,7 +4,7 @@
 #+options: H:3 toc:nil author:nil date:nil
 
 #+include: preamble.org
-
+#+beamer_header: \setbeamercovered{transparent}
 
 * history
 
@@ -15,9 +15,7 @@
 
 #+attr_latex: :width 0.5\linewidth
 [[file:images/sutherland-sketchpad.jpg]]
-/Image Courtesy: Youtube/
-
-[[https://www.youtube.com/watch?v=ztRtFEwyXnY][(Youtube)]]
+@@latex:\tiny@@ /Image Courtesy: [[https://www.youtube.com/watch?v=ztRtFEwyXnY][Youtube]]/
 
 *** Flatland 1999
 #+caption: Flatland [[cite:&MIEL99]]
@@ -31,16 +29,16 @@
 #+attr_latex: :width 0.6\linewidth
 [[file:images/plushie-2007.jpg]]
 
-[[https://www.youtube.com/watch?v=rbQWxL-_8LU][(Youtube)]]
+See Also: [[https://www.youtube.com/watch?v=rbQWxL-_8LU][Teaser @Youtube]]
 
 *** cityengine esri 2012
 \centering
 
 #+attr_latex: :width 0.8\linewidth
 [[file:images/cityengine-esri.jpg]]
-/Image Courtesy: Youtube/
+@@latex:\tiny@@ /Image Courtesy: [[https://www.youtube.com/watch?v=aFRqSJFp-I0][Youtube]]/
 
-[[https://www.youtube.com/watch?v=aFRqSJFp-I0][(Youtube)]], [[https://www.youtube.com/watch?v=jsFztFXiPTM][Peter Wonka @3DGV]]
+See Also: [[https://www.youtube.com/watch?v=jsFztFXiPTM][Peter Wonka @3DGV]]
 
 ** Display
 
@@ -49,7 +47,7 @@
 
 #+attr_latex: :width 0.6\linewidth
 [[file:images/crt.png]]
-/Image Courtesy: [[https://en.wikipedia.org/wiki/File:Cathode_ray_Tube.PNG][Wikipedia]]/
+@@latex:\tiny@@ /Image Courtesy: [[https://en.wikipedia.org/wiki/File:Cathode_ray_Tube.PNG][Wikipedia]]/
 
 Monochrome (Raster), Colour (Raster), Direct-View
 Bistable Storage (Vector)
@@ -60,14 +58,14 @@ Bistable Storage (Vector)
 
 #+attr_latex: :width 0.6\linewidth
 [[file:images/Nixie2.jpg]]
-/Image Courtesy: [[https://en.wikipedia.org/wiki/Nixie_tube][Wikipedia]]/
+@@latex:\tiny@@ /Image Courtesy: [[https://en.wikipedia.org/wiki/Nixie_tube][Wikipedia]]/
 
 *** flip-disc display
 \centering
 
 #+attr_latex: :width 0.8\linewidth
 [[file:images/Changi-T2-Flipboard-2.jpg]]
-/Image Courtesy: [[https://mainlymiles.com/2020/01/17/changis-iconic-flip-board-displays-to-go-as-terminal-2-revamp-gets-underway/][Web]]/
+@@latex:\tiny@@ /Image Courtesy: [[https://mainlymiles.com/2020/01/17/changis-iconic-flip-board-displays-to-go-as-terminal-2-revamp-gets-underway/][Web]]/
 
 *** Recently
 
@@ -117,16 +115,16 @@ Modern
 
 #+attr_latex: :width 0.6\linewidth
 [[file:images/plotter.jpg]]
-/Image Courtesy: [[https://i.ytimg.com/vi/3ohDaX4uxKY/maxresdefault.jpg][Youtube]]/
+@@latex:\tiny@@ /Image Courtesy: [[https://i.ytimg.com/vi/3ohDaX4uxKY/maxresdefault.jpg][Youtube]]/
 
-[[https://youtu.be/nMt5Dw04XhY][Can I teach a robot to replicate a line art?]]
+See Also: [[https://youtu.be/nMt5Dw04XhY][Can I teach a robot to replicate a line art?]]
 [[cite:&VKN20]]
 
 * constraint of the real-time
 
 *** real time
 
-+ *{{{sc(throughput)}}}* $>=17$ frames per second (FPS);
++ *{{{sc(throughput)}}}* $>=18$ frames per second (FPS);
 + *{{{sc(refresh rate)}}}* $>=24$ Hz;
 
 *** resolution
@@ -139,14 +137,16 @@ time of,
 + $1024\times768\approx0.8$ MP $\to 53$ ns
 + $1366\times768\approx1$ MP $\to 40$ ns
 
-\pause
 
-With a 384 core GPU
+*** resolution
+
+Same with a 384 core GPU,
 
 + $1440\times900\approx1.3$ MP $\to 12.3$ \mu{}s
 + $1920\times1280\approx2.5$ MP $\to 6.5$ \mu{}s
 + $3072\times1920\approx6$ MP $\to 2.7$ \mu{}s
 + $8192\times4320\approx35$ MP $\to 0.45$ \mu{}s
+
 * some terminology
 
 *** representation
@@ -228,16 +228,70 @@ concept.
 :END:
 
 [[file:images/gl1-pipeline-01.png]]
+@@latex:\tiny@@ /Image Courtesy: [[https://duriansoftware.com/joe/media/gl1-pipeline-01.png][Durian Software]]/
 ***** 
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .7
+:END:
+#+attr_beamer: :overlay <+>
++ Data Input
+  #+attr_beamer: :overlay <. | only@.>
+  + Uniform State
+  + Vertex Array (per-vertex data)
+  + Element Array (list of elements)
++ *Vertex Shader*
+  #+attr_beamer: :overlay <. | only@.>
+  + input ::
+    + Per Vertex Data
+    + Uniform State
+  + output ::
+    + Position
+    + For Next Shader
++ Triangle Assembly 
+  #+attr_beamer: :overlay <. | only@.>
+  + Uses Element Array
++ Rasterisation
+  #+attr_beamer: :overlay <. | only@.>
+  + Which element corresponds to which fragment
++ *Fragment Shader*
+  #+attr_beamer: :overlay <. | only@.>
+  + input ::
+    + From Prev Shader
+    + Uniform State
+  + output ::
+    + Fragment Colour
++ Framebuffer
+** Geometry Definition in OpenGL
+*** three types
+#+attr_beamer: :overlay <+ | alert@+>
++ @@latex:\huge@@ {{{sc(point)}}}
++ @@latex:\huge@@ {{{sc(straight line)}}}
++ @@latex:\huge@@ {{{sc(planar polygon)}}}
+  @@latex:\normalsize@@
+  #+attr_beamer: :overlay <. | only@.>
+  + Triangle
+  + Quad
+*** attributes
+*** elements
+** Vertex Shader
+** Fragment Shader
+* hot rod example
+*** problem
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+*****                                                    :B_column:BMCOL:
 :PROPERTIES:
 :BEAMER_env: column
 :BEAMER_col: .45
 :END:
+*Given* a straight line with vertex attributes: /a)/
+position in 2D coordinates; and /b)/ temperature value;
 
-*Vertex Shader*
-
-*Fragment Shader*
-
+*Draw* the line with a heat gradient using a predefined
+heat map for colour.
 
 * references
 :PROPERTIES:
