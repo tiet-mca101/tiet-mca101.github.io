@@ -49,13 +49,24 @@
 | 3 | 0 | 2 |  4 |
 
 * Introduction
+:PROPERTIES:
+:CUSTOM_ID: introduction
+:END:
 
 [[file:mca101-syllabus.pdf][Syllabus [PDF]​]]
 
 ** Academic Calendar
+:PROPERTIES:
+:CUSTOM_ID: academic-calendar
+:END:
+
 [[file:image/academic-calendar.png]]
 
 ** Scheduled break up
+:PROPERTIES:
+:CUSTOM_ID: scheduled-break-up
+:END:
+
 
 |-----------------------------+---+----+---|
 |                             | W |  L | P |
@@ -66,6 +77,11 @@
 |-----------------------------+---+----+---|
 
 ** Evaluation
+:PROPERTIES:
+:CUSTOM_ID: evaluation
+:END:
+
+
 |                                    | Date      |  MM |
 |------------------------------------+-----------+-----|
 | MST                                | TBA       |  25 |
@@ -78,16 +94,39 @@
 #+TBLFM: @7$3=vsum(@I..II)
 
 ** Instructors
+:PROPERTIES:
+:CUSTOM_ID: instructors
+:END:
+
+
 [[https://bvraghav.com/][Raghav]], Namrata Dimari
 
 * Curriculum
+:PROPERTIES:
+:CUSTOM_ID: curriculum
+:END:
+
 ** Course Objectives
+:PROPERTIES:
+:CUSTOM_ID: course-objectives
+:END:
+
+
 Detailed study of graphics, 2D/3D Transformations,
 representations and visualisation.
 
 ** Syllabus
+:PROPERTIES:
+:CUSTOM_ID: syllabus
+:END:
+
 
 *** Fundamentals
+:PROPERTIES:
+:CUSTOM_ID: fundamentals
+:END:
+
+
 + A brief history of application;
 + The hardware of display and its evolution;
 + Relationship b/w physical display and abstractions;
@@ -97,23 +136,46 @@ representations and visualisation.
 + The Graphics Pipeline (Detail).
 
 *** Representation
+:PROPERTIES:
+:CUSTOM_ID: representation
+:END:
+
 
 **** Color
+:PROPERTIES:
+:CUSTOM_ID: color
+:END:
+
+
 + RGB (Detail);
 + Colour Tables (Detail);
 + Colour Spaces (Overview);
 + Barycentric Interpolation (Math).
 **** 2D Geometry
+:PROPERTIES:
+:CUSTOM_ID: 2d-geometry
+:END:
+
+
 + Straight lines and Conics: Mid-point Algorithm
   (Math/Algo);
 + Fill (Algo);
 + Splines (Math).
 **** 3D Geometry
+:PROPERTIES:
+:CUSTOM_ID: 3d-geometry
+:END:
+
 + 3D Geometry Representation: B-Rep (Detail);
 + Spline Surfaces (Overview);
 + Signed Distance Function (Overview);
 
 *** Transformation
+:PROPERTIES:
+:CUSTOM_ID: transformation
+:END:
+
+
 + Fundamentals of Linear Algebra (Math);
 + The point of view;
 + Transformations and terminology (Detail);
@@ -125,6 +187,11 @@ representations and visualisation.
 + Orthographic and Projective Transforms (Math);
 
 *** 2D Clipping
+:PROPERTIES:
+:CUSTOM_ID: 2d-clipping
+:END:
+
+
 + Sutherland Cohen (Algo);
 + Liang Barsky (Algo);
 + Nicholl-Lee-Nicholl (Detail);
@@ -132,17 +199,42 @@ representations and visualisation.
 + Weiler Atherton (Algo);
 
 *** Visualisation
+:PROPERTIES:
+:CUSTOM_ID: visualisation
+:END:
+
 
 **** Illumination Models
+:PROPERTIES:
+:CUSTOM_ID: illumination-models
+:END:
+
 
 **** Kajiya’s Rendering Equation
+:PROPERTIES:
+:CUSTOM_ID: kajiya-s-rendering-equation
+:END:
+
 
 **** Visualisation of Scientific Data
+:PROPERTIES:
+:CUSTOM_ID: visualisation-of-scientific-data
+:END:
+
 
 
 * Schedule of Practicals
+:PROPERTIES:
+:CUSTOM_ID: schedule-of-practicals
+:END:
+
 
 ** Lab 1
+:PROPERTIES:
+:CUSTOM_ID: lab-1
+:END:
+
+
 The fundamentals: Javascript, Git, Markdown.
 
 Prerequisite Installs:
@@ -166,20 +258,32 @@ Further Reading:
   how-to-markdown=, [[https://www.markdownguide.org/][Markdown Guide]]
 
 ** Lab 2
+:PROPERTIES:
+:CUSTOM_ID: lab-2
+:END:
 Shaders: [[https://github.com/stackgl/shader-school][(Workshopper)]] on GLSL Shaders
 
 ** Lab 3
+:PROPERTIES:
+:CUSTOM_ID: lab-3
+:END:
 The WebGL Tutorial: [[https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Using_shaders_to_apply_color_in_WebGL][2D Objects and Colors]], and
 animation.
 
 Further Reading: [[https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial][(MDN Tutorials)]]
 
 ** Lab 4
+:PROPERTIES:
+:CUSTOM_ID: lab-4
+:END:
 [[https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Creating_3D_objects_using_WebGL][Tranformations and 3D]]
 
 Further Reading: [[https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial][(MDN Tutorials)]]
 
 ** Lab 5
+:PROPERTIES:
+:CUSTOM_ID: lab-5
+:END:
 (Bonus) Geometry (Scene) Authoring using Blender:
 [[https://www.youtube.com/watch?v=Rqhtw7dg6Wk][(Youtube)]]
 
@@ -190,39 +294,78 @@ Further Reading:
 + [[https://www.blender.org/support/][Blender Official and Endorsed Support]]
 
 ** Lab 6: Eval Week                                                    :TBA:
+:PROPERTIES:
+:CUSTOM_ID: lab-6
+:END:
 LE1: Algo Implementation: Straight Lines and Fills
 
 ** Lab 7
+:PROPERTIES:
+:CUSTOM_ID: lab-7
+:END:
 [[https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Using_textures_in_WebGL][Textures]] and its artistic aspect.
 
 ** MST
+:PROPERTIES:
+:CUSTOM_ID: lab-mst
+:END:
 
 ** Lab 8
+:PROPERTIES:
+:CUSTOM_ID: lab-8
+:END:
 [[https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Animating_textures_in_WebGL][More animation: Animating Textures]]
 
 ** Lab 9
+:PROPERTIES:
+:CUSTOM_ID: lab-9
+:END:
 [[https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Lighting_in_WebGL][Illumination Models: The Phong Model]]
 
 ** Lab 10
+:PROPERTIES:
+:CUSTOM_ID: lab-10
+:END:
 Buffer
 
 ** Diwali
+:PROPERTIES:
+:CUSTOM_ID: lab-diwali
+:END:
 
 ** Lab 11: Eval Week                                                   :TBA:
+:PROPERTIES:
+:CUSTOM_ID: lab-11
+:END:
 Project Eval: LE3
 
 ** Lab 12
+:PROPERTIES:
+:CUSTOM_ID: lab-12
+:END:
 (Bonus) Scene Graphs
 
 ** Lab 13: Eval Week                                                   :TBA:
+:PROPERTIES:
+:CUSTOM_ID: lab-13
+:END:
 LE2: Quantitative Visualisation UI
 
 ** Lab 14
+:PROPERTIES:
+:CUSTOM_ID: lab-14
+:END:
 Buffer
 
 * Resources
+:PROPERTIES:
+:CUSTOM_ID: resources
+:END:
 
 **  Text
+:PROPERTIES:
+:CUSTOM_ID: resources-text
+:END:
 
 1. Hughes, J. F., Dam, A. V., Mcguire, M., Sklar,
    D. F., Foley, J. D., Feiner, S. K., & Akeley,
@@ -236,6 +379,9 @@ Buffer
    Kaufmann.
 
 ** Reference
+:PROPERTIES:
+:CUSTOM_ID: resources-reference
+:END:
 
 1. Akenine-Möller, T., Haines, E., & Hoffman,
    N. (2018). Real-time rendering (Fourth Edition). AK
