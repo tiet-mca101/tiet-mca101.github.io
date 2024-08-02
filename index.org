@@ -126,6 +126,7 @@ representations and visualisation.
 :CUSTOM_ID: fundamentals
 :END:
 
+[[file:lectures/01-fundamentals.pdf][Lecture Notes [PDF]​]]
 
 + A brief history of application;
 + The hardware of display and its evolution;
@@ -220,8 +221,6 @@ representations and visualisation.
 :PROPERTIES:
 :CUSTOM_ID: visualisation-of-scientific-data
 :END:
-
-
 
 * Schedule of Practicals
 :PROPERTIES:
