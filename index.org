@@ -1,7 +1,7 @@
 # -*- org-image-actual-width: (64 128 256 512); openwith-associations: (("\.pdf\'" "evince" (file))); -*-
 #+OPTIONS: num:nil html-postamble:t html-style:nil toc:1
-#+TITLE: Course Page
-#+SUBTITLE: MCA101 Computer Graphics
+#+TITLE: MCA101 Computer Graphics
+#+SUBTITLE: Course Page
 #+DATE: [2024-07-15 Mon]
 #+AUTHOR: Raghav B. Venkataramaiyer
 # #+AUTHOR: B.V. Raghav, Subham Kumar, Vinay P. Namboodiri
@@ -12,7 +12,7 @@
 #+HTML_HEAD: <meta name="keywords" content="computer graphics">
 
 #+HTML_HEAD: <meta name="description" content="Course Page for 
-#+HTML_HEAD:   Course MCA101 Computer Graphcis">
+#+HTML_HEAD:   Course MCA101 Computer Graphics">
 
 #+HTML_HEAD: <meta name="viewport" content="width=device-width, initial-scale=1">
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/css/dhiw.css" />
@@ -60,12 +60,17 @@
 :CUSTOM_ID: academic-calendar
 :END:
 
+#+name: fig:academic-calendar
+#+caption: Academic Calendar
 [[file:image/academic-calendar.png]]
 
 ** Scheduled break up
 :PROPERTIES:
 :CUSTOM_ID: scheduled-break-up
 :END:
+
+Check academic calendar here:
+ref:fig:academic-calendar.
 
 
 |-----------------------------+---+----+---|
