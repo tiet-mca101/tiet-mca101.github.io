@@ -147,11 +147,12 @@ representations and visualisation.
 :END:
 
 
-**** Color
+**** Colour
 :PROPERTIES:
 :CUSTOM_ID: color
 :END:
 
+[[file:lectures/02.1-color-representation.pdf][Lecture Slides [PDF]​]]
 
 + RGB (Detail);
 + Colour Tables (Detail);

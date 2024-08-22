@@ -1,0 +1,502 @@
+#+startup: beamer
+#+title: mca101 : computer graphics
+#+subtitle: color representation
+#+email: bv.raghav@thapar.edu
+#+options: H:3 toc:nil author:nil date:nil
+
+#+include: preamble.org
+#+beamer_header: \setbeamercovered{transparent}
+
+* colours --- introduction
+
+*** what are colours
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .5
+:END:
+#+begin_quote
+Colour is the *visual perception* based on the
+*electromagnetic spectrum*. Though color is not an
+*inherent property* of matter, color perception is
+related to an object's *light absorption*,
+*reflection*, *emission spectra*, and *interference*
+--- [[https://en.wikipedia.org/wiki/Color][Wikipedia]]
+#+end_quote
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .5
+:END:
+
+#+caption: Image Courtesy: [[https://en.wikipedia.org/wiki/File:Colouring_pencils.jpg][Wikipedia]]
+[[file:images/Colouring_pencils.jpg]]
+
+*** rgb colours
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .5
+:END:
+
+#+begin_quote
+Perception of color originates from different light
+wavelength or spectral sensitivity in cone cell types,
+which is then processed by the brain.
+
+For most humans, colors are perceived in the visible
+light spectrum with three types of cone cells
+(trichromacy)
+
+--- [[https://en.wikipedia.org/wiki/Color][Wikipedia]]
+#+end_quote
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .5
+:END:
+
+#+caption: Image Courtesy: [[https://upload.wikimedia.org/wikipedia/commons/f/f9/Tricolour_television_close_up.jpg][Wikipedia]]
+[[file:images/Tricolour_television_close_up.jpg]]
+
+****                                                     :B_ignoreheading:
+:PROPERTIES:
+:BEAMER_env: ignoreheading
+:END:
+
+*** visible spectrum
+
+#+caption: Visible Spectrum. Courtesy: [[https://en.wikipedia.org/wiki/File:Visible_spectrum_390-710_nm_linear_perceptual.svg][Wikipedia]]
+[[file:images/Visible_spectrum_390-710_nm_linear_perceptual.svg.png]]
+
+*** rgb/a representation
+
+A colour in machine representation is
++ a 3-vector for RGB,  i.e.
+  + $\mathbf{c}\in\mathbb{R}_{[0,1]}^3$ in
+    floating-point representation;
+  + $\mathbf{c}\in\mathbb{Z}_{[0,255]}^3$ in 8-bit
+    fixed-point representation.
++ a 4-vector for RGBA,  i.e.
+  + $\mathbf{c}\in\mathbb{R}_{[0,1]}^4$ in
+    floating-point representation;
+  + $\mathbf{c}\in\mathbb{Z}_{[0,255]}^4$ in 8-bit
+    fixed-point representation.
+
+** Image Representation
+
+*** an image as composition of pixels
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .67
+:END:
+
++ An *image* is represented in _pixels_;
++ Conceptually, an image may be thought of split into a
+  *rectangular grid* of height $H$ and width $W$;
++ Each cell of such a grid, is called a *pixel*. A
+  pixel is the smallest unit of area patch in an image
+  and contains a uniform colour throughout;
++ $H\times W$ is called *the resolution* of such an
+  image.
+
+*** an image as a bounded space
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .67
+:END:
+
++ An optical camera sensor receives *coloured signals*
+  within the spatial opening from its shutter;
++ The sensor registers the signals as energy/ intensity
+  corresponding to each of the R,G,B frequencies of
+  visible spectrum.
++ The signals are physically *continuous* in space.
++ In practice, samples are *discrete* in space.
++ The space is 2-dimensional and *bound* on top, bottom,
+  left and right.
++ Hence an image may also be interpreted as *a
+  quantised and bounded spatial signal*.
+
+
+*** image channels
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .67
+:END:
+
++ Each of R, G, B, A etc. are known as channels.
++ If a camera may sample more frequencies, including
+  ultra- and infra-optical spectrum, the resulting
+  image is called a hyper-spectral image.
++ The RGB image has 3-channels
++ The RGBA image has 4-channels
++ A hyper-spectral image may have many channels, say
+  $C$ channels.
+
+*** image in floating-point representation
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .67
+:END:
+
+A floating-point may be 16-bit, 32-bit or 64-bit per
+channel, generally used internally within graphic
+frameworks like OpenGL/ WebGL etc.
+
+\vspace{\baselineskip}
+
+An image with resolution $H\times W$, \\
+containing $C$ channels \\
+is represented as
+$\mathbf{x}\in\mathbb{R}_{[0,1]}^{C\times H\times W}$.
+
+\vspace{\baselineskip}
+
+An RGB image with resolution $H\times W$, \\
+is represented as $\mathbf{x}\in\mathbb{R}_{[0,1]}^{3\times
+H\times W}$.
+
+\vspace{\baselineskip}
+
+An RGBA image with resolution $H\times W$, \\
+is represented as $\mathbf{x}\in\mathbb{R}_{[0,1]}^{4\times
+H\times W}$.
+
+*** image in 8-bit fixed-point
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .67
+:END:
+A fixed-point may be 8-bit, 16-bit, 32-bit or 64-bit
+per channel, generally 8-bit is most commonly used.
+
+\vspace{\baselineskip}
+
+An image with resolution $H\times W$, \\
+containing $C$ channels \\
+is represented as $\mathbf{x}\in\mathbb{Z}_{[0,255]}^{C\times
+H\times W}$.
+
+\vspace{\baselineskip}
+
+An RGB image with resolution $H\times W$, \\
+is represented as $\mathbf{x}\in\mathbb{Z}_{[0,255]}^{3\times
+H\times W}$.
+
+\vspace{\baselineskip}
+
+An RGBA image with resolution $H\times W$, \\
+is represented as
+$\mathbf{x}\in\mathbb{Z}_{[0,255]}^{4\times H\times W}$.
+
+*** question
+
+1. How is a grayscale image with resolution $H\times W$
+   with floating-point representation described
+   mathematically?
+1. How is a grayscale image with resolution $H\times W$
+   with 8-bit fixed-point representation described
+   mathematically?
+1. How is a grayscale image with resolution $H\times W$
+   with 16-bit fixed-point representation described
+   mathematically?
+
+*** question
+#+attr_latex: [resume]
+1. What is the minimum size (in bytes) required to store an
+   uncompressed RGB image in FHD resolution. Assume the
+   image header to be $H$ bytes.
+1. What is the minimum size (in bytes) required to
+   store an uncompressed RGBA image in FHD
+   resolution. Assume the image header to be $H$ bytes.
+
+* colour tables
+
+*** colour tables
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .67
+:END:
+
+In order to improve storage efficiency of images,
+
+\vspace{\baselineskip}
++ Included colours are listed, the count $n<256$
+  generally.  This is called a colour table.
++ For each pixel, the colour is approximated and
+  assigned to be one of the colours in the table, and
+  the colour index is stored instead of the complete
+  colour information.
++ This reduces the storage requirement by order of
+  magnitude.
++ The only additional storage requirement is that of
+  the colour table, $n\times3$ bytes
+*** storage efficiency
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .67
+:END:
+For example,
++ RGB image requires $8\times3 = 24$ bits per pixel;
+  whereas
++ Colour table with upto 2 colours would require only
+  1-bit per pixel;
++ Colour table with 3-4 colours would require only
+  2-bit per pixel;
++ Colour table with 5-8 colours would require only
+  3-bit per pixel;
+*** storage efficiency
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .67
+:END:
+
+
+| Num Bits | Max Num Colours |
+|----------+-----------------|
+|        1 |               2 |
+|        2 |               4 |
+|        3 |               8 |
+|        4 |              16 |
+|        5 |              32 |
+|        6 |              64 |
+|        7 |             128 |
+|        8 |             256 |
+
+
+*** question
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .67
+:END:
+
+What is the minimum size (in bytes) of storage required
+to store an image with colour table with 100
+RGB-colours? Assume the image header to be $H$ bytes.
+
+* colour spaces
+
+*** hsl and hsv
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .4
+:END:
+
+
+#+caption: Image Courtesy: [[https://commons.wikimedia.org/wiki/File:Hsl-hsv_models.svg][Wikipedia]]
+[[file:images/Hsl-hsv_models.svg.png]]
+
+* barycentric interpolation
+
+** Linear Interpolation
+
+*** linear interpolation
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .3
+:END:
+*Question* \\
+Given two points $\mathbf{a},\mathbf{b} \in
+\mathbb{R}^2$, find the point on straight line
+connecting them, and in between, so that it is twice as
+far away from $\mathbf{b}$ as it is from $\mathbf{a}$.
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .7
+:END:
+
+*Solution* \\
+Point on straight line connecting
+$\mathbf{a},\mathbf{b}$, and in between, may be given
+parameterised by $t\in\mathbb{R}_{[0,1]}$ as,
+\begin{align}
+  \notag
+  f(t) = (1-t)\mathbf{a} + t\,\mathbf{b}
+\end{align}
+
+Here if the Euclidean distance $\Delta_E (\mathbf{a},
+\mathbf{b}) = 1\,\mathrm{unit}$, then $\Delta_E
+(\mathbf{a}, f(t)) = 1-t\,\mathrm{units}$, and
+$\Delta_E (f(t), \mathbf{b}) = t\,\mathrm{units}$.
+
+Hence,
+\begin{align}
+  \notag
+  t &= \frac23 \qquad \because t = 2(1-t) \\
+  \notag
+  \mathbf{p} &= f(t=\frac23) =
+               \frac13\mathbf{a} + \frac23\mathbf{b}
+\end{align}
+
+
+
+*** linear interpolation
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .3
+:END:
+*Question* \\
+Given two RGB colours $\mathbf{a},\mathbf{b} \in
+\mathbb{R}^3$, find the colour $\mathbf{c}$, so that it
+is twice as far away from $\mathbf{b}$ as it is from
+$\mathbf{a}$.
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .7
+:END:
+
+*Solution* \\
+Point on hypothetical straight line in RGB colour space
+connecting $\mathbf{a},\mathbf{b}$, and in between, may
+be given parameterised by $t\in\mathbb{R}_{[0,1]}$ as,
+\begin{align}
+  \notag
+  f(t) = (1-t)\mathbf{a} + t\,\mathbf{b}
+\end{align}
+
+Here if the Euclidean distance $\Delta_E (\mathbf{a},
+\mathbf{b}) = 1\,\mathrm{unit}$, then $\Delta_E
+(\mathbf{a}, f(t)) = 1-t\,\mathrm{units}$, and
+$\Delta_E (f(t), \mathbf{b}) = t\,\mathrm{units}$.
+
+Hence,
+\begin{align}
+  \notag
+  t &= \frac23 \qquad \because t = 2(1-t) \\
+  \notag
+  \mathbf{p} &= f(t=\frac23) =
+               \frac13\mathbf{a} + \frac23\mathbf{b}
+\end{align}
+
+
+
+
+
+*** barycentric coordinates
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .3
+:END:
+
+#+caption: Image Courtesy: [[https://commons.wikimedia.org/wiki/File:TriangleBarycentricCoordinates.svg][Wikipedia]]
+[[file:images/TriangleBarycentricCoordinates.svg.png]]
+# * references
+# :PROPERTIES:
+# :UNNUMBERED: t
+# :END:
+# *** references
+# :PROPERTIES:
+# :BEAMER_opt: allowframebreaks
+# :END:
+# \printbibliography
+
