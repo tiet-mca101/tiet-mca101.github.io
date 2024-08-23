@@ -1,4 +1,4 @@
-% Created 2024-08-22 Thu 16:13
+% Created 2024-08-23 Fri 12:58
 % Intended LaTeX compiler: pdflatex
 \documentclass[aspectratio=169,xcolor={dvipsnames,svgnames}]{beamer}
 \usepackage[utf8x]{inputenc}
@@ -104,9 +104,9 @@ CSED TIET Patiala India.
 \maketitle
 
 \section{colours --- introduction}
-\label{sec:orgba3ce24}
+\label{sec:org2d81992}
 
-\begin{frame}[label={sec:orga0035a4}]{what are colours}
+\begin{frame}[label={sec:org0fff22c}]{what are colours}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 \begin{quote}
@@ -129,7 +129,7 @@ related to an object's \alert{light absorption},
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org2f545aa}]{rgb colours}
+\begin{frame}[label={sec:org49adc62}]{rgb colours}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 \begin{quote}
@@ -155,7 +155,7 @@ light spectrum with three types of cone cells
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:orgff3daa1}]{visible spectrum}
+\begin{frame}[label={sec:orgf2b6bd6}]{visible spectrum}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{images/Visible_spectrum_390-710_nm_linear_perceptual.svg.png}
@@ -163,7 +163,7 @@ light spectrum with three types of cone cells
 \end{figure}
 \end{frame}
 
-\begin{frame}[label={sec:orgc1dcf11}]{rgb/a representation}
+\begin{frame}[label={sec:org9c9872a}]{rgb/a representation}
 A colour in machine representation is
 \begin{itemize}
 \item a 3-vector for RGB,  i.e.
@@ -184,9 +184,9 @@ fixed-point representation.
 \end{frame}
 
 \subsection{Image Representation}
-\label{sec:orgd56a2ce}
+\label{sec:orga2d0da8}
 
-\begin{frame}[label={sec:orgaa922ed}]{an image as composition of pixels}
+\begin{frame}[label={sec:orgcef61b6}]{an image as composition of pixels}
 \begin{columns}
 \begin{column}{.67\columnwidth}
 \begin{itemize}
@@ -203,7 +203,7 @@ image.
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org111e9f8}]{an image as a bounded space}
+\begin{frame}[label={sec:orgf7ddfd4}]{an image as a bounded space}
 \begin{columns}
 \begin{column}{.67\columnwidth}
 \begin{itemize}
@@ -224,7 +224,7 @@ quantised and bounded spatial signal}.
 \end{frame}
 
 
-\begin{frame}[label={sec:orgbb0fade}]{image channels}
+\begin{frame}[label={sec:org7796ac1}]{image channels}
 \begin{columns}
 \begin{column}{.67\columnwidth}
 \begin{itemize}
@@ -241,7 +241,7 @@ image is called a hyper-spectral image.
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org412c564}]{image in floating-point representation}
+\begin{frame}[label={sec:org17d7804}]{image in floating-point representation}
 \begin{columns}
 \begin{column}{.67\columnwidth}
 A floating-point may be 16-bit, 32-bit or 64-bit per
@@ -270,7 +270,7 @@ H\times W}\).
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org714c6a8}]{image in 8-bit fixed-point}
+\begin{frame}[label={sec:orgece9a86}]{image in 8-bit fixed-point}
 \begin{columns}
 \begin{column}{.67\columnwidth}
 A fixed-point may be 8-bit, 16-bit, 32-bit or 64-bit
@@ -298,7 +298,7 @@ is represented as
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org4a3b29b}]{question}
+\begin{frame}[label={sec:org4487b3b}]{question}
 \begin{enumerate}
 \item How is a grayscale image with resolution \(H\times W\)
 with floating-point representation described
@@ -312,7 +312,7 @@ mathematically?
 \end{enumerate}
 \end{frame}
 
-\begin{frame}[label={sec:org74b2b9d}]{question}
+\begin{frame}[label={sec:org306d285}]{question}
 \begin{enumerate}
 \item What is the minimum size (in bytes) required to store an
 uncompressed RGB image in FHD resolution. Assume the
@@ -324,9 +324,9 @@ resolution. Assume the image header to be \(H\) bytes.
 \end{frame}
 
 \section{colour tables}
-\label{sec:org910ee4e}
+\label{sec:org926c0c8}
 
-\begin{frame}[label={sec:org6affc99}]{colour tables}
+\begin{frame}[label={sec:org461a496}]{colour tables}
 \begin{columns}
 \begin{column}{.67\columnwidth}
 In order to improve storage efficiency of images,
@@ -347,7 +347,7 @@ the colour table, \(n\times3\) bytes
 \end{column}
 \end{columns}
 \end{frame}
-\begin{frame}[label={sec:orgfa1aaf0}]{storage efficiency}
+\begin{frame}[label={sec:org4e24197}]{storage efficiency}
 \begin{columns}
 \begin{column}{.67\columnwidth}
 For example,
@@ -364,7 +364,7 @@ whereas
 \end{column}
 \end{columns}
 \end{frame}
-\begin{frame}[label={sec:org0e7ec27}]{storage efficiency}
+\begin{frame}[label={sec:org9ffb8c9}]{storage efficiency}
 \begin{columns}
 \begin{column}{.67\columnwidth}
 \begin{center}
@@ -386,7 +386,7 @@ Num Bits & Max Num Colours\\[0pt]
 \end{frame}
 
 
-\begin{frame}[label={sec:orgae22218}]{question}
+\begin{frame}[label={sec:orgf268ed3}]{question}
 \begin{columns}
 \begin{column}{.67\columnwidth}
 What is the minimum size (in bytes) of storage required
@@ -397,9 +397,9 @@ RGB-colours? Assume the image header to be \(H\) bytes.
 \end{frame}
 
 \section{colour spaces}
-\label{sec:org69f5f06}
+\label{sec:org6df1653}
 
-\begin{frame}[label={sec:orga35a5c8}]{hsl and hsv}
+\begin{frame}[label={sec:orgc5cc1c1}]{hsl and hsv}
 \begin{columns}
 \begin{column}{.4\columnwidth}
 \begin{figure}[htbp]
@@ -411,13 +411,118 @@ RGB-colours? Assume the image header to be \(H\) bytes.
 \end{columns}
 \end{frame}
 
-\section{barycentric interpolation}
-\label{sec:orgf715ac8}
+\begin{frame}[label={sec:org8ec1b5f}]{cmyk (print technology)}
+\begin{columns}
+\begin{column}{.5\columnwidth}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.65\linewidth]{images/CMYK_color_model.svg.png}
+\caption{When subtractive CMY inks are combined at full strength, pairwise combinations are red, green, and blue. Combining all three gives an imperfect black colour.}
+\end{figure}
+\end{column}
+
+\begin{column}{.5\columnwidth}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.65\linewidth]{images/CMYK_Color_Swatches.svg.png}
+\caption{Color printing typically uses ink of four colours: cyan, magenta, yellow, and black.}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[label={sec:orgc9b585f}]{rgb vs cmyk}
+\begin{columns}
+\begin{column}{.5\columnwidth}
+\begin{center}
+\includegraphics[width=.9\linewidth]{images/RGB_and_CMYK_comparison.png}
+\end{center}
+\end{column}
+
+\begin{column}{.5\columnwidth}
+A comparison of CMYK and RGB color models. This image
+demonstrates the difference between how colors will
+look on a computer monitor (RGB) compared to how they
+might reproduce in a particular CMYK print process.
+
+\vspace{\baselineskip}
+
+Image Courtesy: \href{https://commons.wikimedia.org/wiki/File:RGB\_and\_CMYK\_comparison.png}{Wikipedia}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[label={sec:orgf83cb5a}]{colour mixing: additive vs subtractive}
+\begin{columns}
+\begin{column}{.5\columnwidth}
+\textsc{additive colour mixing} \\[0pt]
+Three overlapping light bulbs in a vacuum, adding
+together to create white.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\linewidth]{images/AdditiveColor.svg.png}
+\caption{Image Courtesy: \href{https://en.wikipedia.org/wiki/File:AdditiveColor.svg}{Wikipedia}}
+\end{figure}
+\end{column}
+\begin{column}{.5\columnwidth}
+\textsc{subtractive colour mixing} \\[0pt]
+Three splotches of paint on white paper, subtracting
+together to turn the paper black.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\linewidth]{images/SubtractiveColor.svg.png}
+\caption{Image Courtesy: \href{https://en.wikipedia.org/wiki/File:SubtractiveColor.svg}{Wikipedia}}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[label={sec:orgeb1b8fc}]{other colour spaces}
+\begin{enumerate}
+\item Munsell (Munsell Colour System)
+\item Pantone (Pantone Matching System)
+\item Colour Fan Decks (by Paint Manufacturers)
+\item Y,u,v Colour Space
+\item L,a,b Colour Space
+\end{enumerate}
+
+
+\href{https://en.wikipedia.org/wiki/List\_of\_color\_spaces\_and\_their\_uses}{(Read More)}
+\end{frame}
+
+\section{Interpolation}
+\label{sec:org9d32781}
 
 \subsection{Linear Interpolation}
-\label{sec:org318cc43}
+\label{sec:org654cbd6}
 
-\begin{frame}[label={sec:orgeee1043}]{linear interpolation}
+\begin{frame}[label={sec:org1cb4518}]{linear interpolation}
+\begin{columns}
+\begin{column}{.5\columnwidth}
+Point on straight line segment connecting vectors
+\(\mathbf{a},\mathbf{b}\), may be given parameterised by
+\(t\in\mathbb{R}_{[0,1]}\) as,
+\begin{align}
+  \notag
+  f(t) &= (1-t)\mathbf{a} + t\,\mathbf{b} \\
+  \notag
+  &= \mathbf{a} + t(\mathbf{b}-\mathbf{a})
+\end{align}
+
+\begin{align}
+  \notag
+  t=0 &\iff f(t) = \mathbf{a} \\
+  \notag
+  t=1 &\iff f(t) = \mathbf{b}
+\end{align}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}[label={sec:orgf934f80}]{linear interpolation}
 \begin{columns}
 \begin{column}{.3\columnwidth}
 \alert{Question} \\[0pt]
@@ -456,7 +561,7 @@ Hence,
 
 
 
-\begin{frame}[label={sec:org52c6c27}]{linear interpolation}
+\begin{frame}[label={sec:org40e1bea}]{linear interpolation}
 \begin{columns}
 \begin{column}{.3\columnwidth}
 \alert{Question} \\[0pt]
@@ -497,7 +602,10 @@ Hence,
 
 
 
-\begin{frame}[label={sec:orgf0690df}]{barycentric coordinates}
+\subsection{Barycentric Interpolation}
+\label{sec:org98b3d48}
+
+\begin{frame}[label={sec:org0933688}]{barycentric coordinates}
 \begin{columns}
 \begin{column}{.3\columnwidth}
 \begin{figure}[htbp]
@@ -505,6 +613,32 @@ Hence,
 \includegraphics[width=.9\linewidth]{images/TriangleBarycentricCoordinates.svg.png}
 \caption{Image Courtesy: \href{https://commons.wikimedia.org/wiki/File:TriangleBarycentricCoordinates.svg}{Wikipedia}}
 \end{figure}
+\end{column}
+
+\begin{column}{.5\columnwidth}
+With respect to the vertices \(\mathbf{a}\), \(\mathbf{b}\)
+and \(\mathbf{c}\), the points inside the triangle may be
+represented as \((\lambda_{a},\lambda_{b},\lambda_{c})\),
+where \(\lambda_{a} + \lambda_{b} + \lambda_{c} = 1\).
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[label={sec:org3882b62}]{barycentric coordinates}
+\begin{columns}
+\begin{column}{.3\columnwidth}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{images/Barycentric_RGB.svg.png}
+\caption{Barycentric coordinates are used for blending three colors over a triangular region evenly in computer graphics. Image Courtesy: \href{https://commons.wikimedia.org/wiki/File:Barycentric\_RGB.svg}{Wikipedia}}
+\end{figure}
+\end{column}
+
+\begin{column}{.5\columnwidth}
+With respect to the vertices \(\mathbf{a}\), \(\mathbf{b}\)
+and \(\mathbf{c}\), the points inside the triangle may be
+represented as \((\lambda_{a},\lambda_{b},\lambda_{c})\),
+where \(\lambda_{a} + \lambda_{b} + \lambda_{c} = 1\).
 \end{column}
 \end{columns}
 \end{frame}

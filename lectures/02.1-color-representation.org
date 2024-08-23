@@ -372,9 +372,139 @@ RGB-colours? Assume the image header to be $H$ bytes.
 #+caption: Image Courtesy: [[https://commons.wikimedia.org/wiki/File:Hsl-hsv_models.svg][Wikipedia]]
 [[file:images/Hsl-hsv_models.svg.png]]
 
-* barycentric interpolation
+*** cmyk (print technology)
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .5
+:END:
+#+caption: When subtractive CMY inks are combined at full strength, pairwise combinations are red, green, and blue. Combining all three gives an imperfect black colour.
+#+attr_latex: :width 0.65\linewidth
+[[file:images/CMYK_color_model.svg.png]]
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .5
+:END:
+#+caption: Color printing typically uses ink of four colours: cyan, magenta, yellow, and black.
+#+attr_latex: :width 0.65\linewidth
+[[file:images/CMYK_Color_Swatches.svg.png]]
+
+*** rgb vs cmyk
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .5
+:END:
+
+[[file:images/RGB_and_CMYK_comparison.png]]
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .5
+:END:
+
+A comparison of CMYK and RGB color models. This image
+demonstrates the difference between how colors will
+look on a computer monitor (RGB) compared to how they
+might reproduce in a particular CMYK print process.
+
+\vspace{\baselineskip}
+
+Image Courtesy: [[https://commons.wikimedia.org/wiki/File:RGB_and_CMYK_comparison.png][Wikipedia]]
+
+*** colour mixing: additive vs subtractive
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .5
+:END:
+
+{{{sc(additive colour mixing)}}} \\
+Three overlapping light bulbs in a vacuum, adding
+together to create white.
+
+#+caption: Image Courtesy: [[https://en.wikipedia.org/wiki/File:AdditiveColor.svg][Wikipedia]]
+#+attr_latex: :width 0.6\linewidth
+[[file:images/AdditiveColor.svg.png]]
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .5
+:END:
+
+{{{sc(subtractive colour mixing)}}} \\
+Three splotches of paint on white paper, subtracting
+together to turn the paper black.
+
+#+caption: Image Courtesy: [[https://en.wikipedia.org/wiki/File:SubtractiveColor.svg][Wikipedia]]
+#+attr_latex: :width 0.6\linewidth
+[[file:images/SubtractiveColor.svg.png]]
+
+*** other colour spaces
+
+1. Munsell (Munsell Colour System)
+1. Pantone (Pantone Matching System)
+1. Colour Fan Decks (by Paint Manufacturers)
+1. Y,u,v Colour Space
+1. L,a,b Colour Space
+
+
+[[https://en.wikipedia.org/wiki/List_of_color_spaces_and_their_uses][(Read More)]]
+
+* Interpolation
 
 ** Linear Interpolation
+
+*** linear interpolation
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .5
+:END:
+
+Point on straight line segment connecting vectors
+$\mathbf{a},\mathbf{b}$, may be given parameterised by
+$t\in\mathbb{R}_{[0,1]}$ as,
+\begin{align}
+  \notag
+  f(t) &= (1-t)\mathbf{a} + t\,\mathbf{b} \\
+  \notag
+  &= \mathbf{a} + t(\mathbf{b}-\mathbf{a})
+\end{align}
+
+\begin{align}
+  \notag
+  t=0 &\iff f(t) = \mathbf{a} \\
+  \notag
+  t=1 &\iff f(t) = \mathbf{b}
+\end{align}
+
 
 *** linear interpolation
 
@@ -475,6 +605,8 @@ Hence,
 
 
 
+** Barycentric Interpolation
+
 *** barycentric coordinates
 
 ****                                                           :B_columns:
@@ -490,6 +622,57 @@ Hence,
 
 #+caption: Image Courtesy: [[https://commons.wikimedia.org/wiki/File:TriangleBarycentricCoordinates.svg][Wikipedia]]
 [[file:images/TriangleBarycentricCoordinates.svg.png]]
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .5
+:END:
+
+With respect to the vertices $\mathbf{a}$, $\mathbf{b}$
+and $\mathbf{c}$, the points inside the triangle may be
+represented as $(\lambda_{a},\lambda_{b},\lambda_{c})$,
+where $\lambda_{a} + \lambda_{b} + \lambda_{c} = 1$.
+
+
+# * references
+# :PROPERTIES:
+# :UNNUMBERED: t
+# :END:
+# *** references
+# :PROPERTIES:
+# :BEAMER_opt: allowframebreaks
+# :END:
+# \printbibliography
+
+*** barycentric coordinates
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .3
+:END:
+
+#+caption: Barycentric coordinates are used for blending three colors over a triangular region evenly in computer graphics. Image Courtesy: [[https://commons.wikimedia.org/wiki/File:Barycentric_RGB.svg][Wikipedia]]
+[[file:images/Barycentric_RGB.svg.png]]
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .5
+:END:
+
+With respect to the vertices $\mathbf{a}$, $\mathbf{b}$
+and $\mathbf{c}$, the points inside the triangle may be
+represented as $(\lambda_{a},\lambda_{b},\lambda_{c})$,
+where $\lambda_{a} + \lambda_{b} + \lambda_{c} = 1$.
+
+
 # * references
 # :PROPERTIES:
 # :UNNUMBERED: t
