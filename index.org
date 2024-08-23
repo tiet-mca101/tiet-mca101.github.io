@@ -163,6 +163,7 @@ representations and visualisation.
 :CUSTOM_ID: 2d-geometry
 :END:
 
+[[./lectures/02.2-2d-geometry-representation.pdf][Lecture Slides [PDF]​]]
 
 + Straight lines and Conics: Mid-point Algorithm
   (Math/Algo);
