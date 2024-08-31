@@ -104,3 +104,8 @@
 # capacity exceeded”
 # -----------------------------------------------------
 #+latex_header: %\usepackage{enumitem}
+
+
+# Algorithm
+# -----------------------------------------------------
+#+latex_header: \usepackage[linesnumbered,ruled,vlined]{algorithm2e}

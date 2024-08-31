@@ -212,5 +212,131 @@ perpendicular axis or not.
 Increment if required.
 
 *** example
-#+attr_latex: :width 0.65\linewidth
+#+attr_latex: :width 0.8\linewidth
 [[file:images/basic-midpoint-algo.png]]
+  
+*** example
+#+attr_latex: :width \linewidth
+[[file:images/0--mid-point-algo_annotated.png]]
+
+** Straight Line
+*** generic algo
+
+\begin{algorithm}[H]
+  \caption{Generic Mid-point Algorithm}
+  \DontPrintSemicolon
+  \KwIn{$x_0,x_{\mathrm{max}}\in\mathbb{Z}$\hfill\scriptsize
+    Start and end x-coordinates.}
+
+  \KwIn{$F:\mathbb{R}^2\to\mathbb{R}$ \hfill
+    \scriptsize Signed Distance Function from the curve.}
+
+  \KwOut{$C \equiv
+    \{\mathbf{p}_0,\ldots,\mathbf{p}_{\mathrm{max}} \}
+    \subset \mathbb{Z}^2$ \hfill \scriptsize Curve in
+    discrete 2D space.}
+
+  {$\mathbf{p}_0 \gets \begin{bmatrix} x_0 \\ \lceil
+    y_0\rceil \end{bmatrix} \vdash F\left(\begin{matrix}
+      x_0 \\ y_0 \end{matrix}\right) = 0$}
+
+
+\For{$t\in\{1,\ldots,\mathrm{max}\}$}{
+  $\mathbf{p}_{\mathrm{mid}}\gets\mathbf{p}_{t-1}+\begin{pmatrix}1\\
+    \frac12\end{pmatrix}$
+
+  $\delta_t\gets I[F(\mathbf{p}_{\mathrm{mid}})<0]$
+
+  $\mathbf{p}_{t}\gets\mathbf{p}_{t-1}+\begin{pmatrix}
+    1 \\ \delta_{t} \end{pmatrix}$
+  }
+\end{algorithm}
+
+*** mid-point algo for st. line
+
+# \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\begin{algorithm}[H]
+  \caption{Mid-Point Algorithm for Straight Line (intermediate attempt)}
+  \DontPrintSemicolon
+  \KwIn{$x_0,x_{\mathrm{max}}\in\mathbb{Z}$\hfill\scriptsize
+    Start and end x-coordinates.}
+
+  \KwIn{$a,b,c\in\mathbb{Z}: 0\leqslant a < b;
+    b\;\mathrm{even}$ \hfill \scriptsize Coefficients:
+    $F(x,y)=ax-by+c$. \textbf{Rem:} \alert{$-by$}.}
+
+  \KwOut{$C \equiv
+    \{(x_0,y_0),\ldots,(x_{\mathrm{max}},y_{\mathrm{max}})
+    \} \subset \mathbb{Z}^2$ \\\scriptsize An ordered
+    sequence; a curve in discrete 2D space.}
+
+  $y_0\gets\lceil\frac{ax_0+c}{b}\rceil$
+  
+  $\delta_0\gets ax_0-by_0- \frac b2 +c$
+  \hfill{\scriptsize \textbf{Rem:}
+    \alert{$-by_0 - \frac b2$}; $\frac b2\in\mathbb{Z}$
+    because $b$ even.}
+
+  \For{$t\in\{1,\ldots,\mathrm{max}\}$}{
+    $x_t\gets x_{t-1} + 1$
+
+    $\delta_t\gets \delta_{t-1} + a -
+    b\cdot I[\delta_{t-1}<0]$
+
+    $y_t \gets y_{t-1} + I[\delta_t<0]$
+  }
+\end{algorithm}
+
+*** mid-point algo for st. line
+
+# \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\begin{algorithm}[H]
+  \caption{Mid-Point Algorithm for Straight Line}
+  \DontPrintSemicolon
+  \KwIn{$x_0,x_{\mathrm{max}}\in\mathbb{Z}$\hfill\scriptsize
+    Start and end x-coordinates.}
+
+  \KwIn{$a,b,c\in\mathbb{Z}: 0\leqslant a < b;
+    b\;\mathrm{even}$ \hfill \scriptsize Coefficients:
+    $F(x,y)=ax-by+c$. \textbf{Rem:} \alert{$-by$}.}
+
+  \KwOut{$C \equiv
+    \{(x_0,y_0),\ldots,(x_{\mathrm{max}},y_{\mathrm{max}})
+    \} \subset \mathbb{Z}^2$ \\\scriptsize An ordered
+    sequence; a curve in discrete 2D space.}
+
+  \textbf{Init:} $C$ as a new Array.
+
+  \textbf{Init:} $x,y,\delta$ as integers.
+
+  $x\gets x_0$
+
+  $y\gets\lceil\frac{ax+c}{b}\rceil$
+  
+  $\delta\gets ax-by- \frac b2 +c$
+  \hfill{\scriptsize \textbf{Rem:}
+    \alert{$-by - \frac b2$}; $\frac b2\in\mathbb{Z}$
+    because $b$ even.}
+
+  $C\cdot$ Push($(x,y)$)
+
+  \For{$t\in\{1,\ldots,\mathrm{max}\}$}{
+    $x\gets x + 1$
+
+    $\delta\gets \delta + a -
+    b\cdot I[\delta<0]$
+
+    $y \gets y + I[\delta<0]$
+
+    $C\cdot$ Push($(x,y)$)
+  }
+\end{algorithm}
+
+** Circle
+
+***                                                          :B_againframe:
+:PROPERTIES:
+:BEAMER_env: againframe
+:BEAMER_ref: *generic algo
+:BEAMER_act:
+:END:

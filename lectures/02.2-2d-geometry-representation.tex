@@ -1,4 +1,4 @@
-% Created 2024-08-23 Fri 13:57
+% Created 2024-08-31 Sat 13:46
 % Intended LaTeX compiler: pdflatex
 \documentclass[aspectratio=169,xcolor={dvipsnames,svgnames}]{beamer}
 \usepackage[utf8x]{inputenc}
@@ -18,6 +18,7 @@
 \usepackage{varwidth}
 \usepackage[Export]{adjustbox}
 %\usepackage{enumitem}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 \graphicspath{ {./careful-Isaac-Images/} {./org-download-images/} }
 \usepackage[date=year,%
 backend=biber,%
@@ -104,12 +105,12 @@ CSED TIET Patiala India.
 \maketitle
 
 \section{2d geometry --- introduction}
-\label{sec:org5b8f4cc}
+\label{sec:orgf2d24ea}
 
 \subsection{Straight Lines}
-\label{sec:org76c1fad}
+\label{sec:org7dac36a}
 
-\begin{frame}[label={sec:orgee07fde}]{\(y = mx + c\)}
+\begin{frame}[label={sec:orgb8540b1}]{\(y = mx + c\)}
 \begin{align}
   \notag
   y = f(x) &= mx + c
@@ -120,7 +121,7 @@ CSED TIET Patiala India.
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org7f9b56d}]{parametric form}
+\begin{frame}[label={sec:orgfdbad4b}]{parametric form}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 For any two vectors \(\mathbf{u},\mathbf{v}\in V\), a
@@ -135,7 +136,7 @@ parameterised by \(t\in[0,1]\), as
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org112e5a4}]{parametric form}
+\begin{frame}[label={sec:orgedaae96}]{parametric form}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 Any point on a line in the direction of unit vector
@@ -151,7 +152,7 @@ point \(\mathbf{p}_0\) may be given parameterised by
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org182415f}]{hesse normal form}
+\begin{frame}[label={sec:orga6b9c79}]{hesse normal form}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 \begin{center}
@@ -182,10 +183,10 @@ of all points \(\mathbf{p}\) that satisfy,
 \end{frame}
 
 \subsection{Conics}
-\label{sec:org458f0d5}
+\label{sec:org7e64a2e}
 
 
-\begin{frame}[label={sec:org3aea93e}]{circle}
+\begin{frame}[label={sec:org3618730}]{circle}
 \begin{columns}
 \begin{column}{.4\columnwidth}
 \begin{figure}[htbp]
@@ -212,7 +213,7 @@ Parametric Form:
 \end{column}
 \end{columns}
 \end{frame}
-\begin{frame}[label={sec:org3fd2af4}]{ellipse}
+\begin{frame}[label={sec:orgc312cb9}]{ellipse}
 \begin{columns}
 \begin{column}{.4\columnwidth}
 \begin{figure}[htbp]
@@ -243,18 +244,18 @@ Parametric Form
 
 
 \section{mid-point algorithm}
-\label{sec:org33cbcf2}
+\label{sec:orgb152873}
 
 \subsection{Fundamentals}
-\label{sec:orgf9eee31}
+\label{sec:org664851e}
 
-\begin{frame}[label={sec:org26988b7}]{problem}
+\begin{frame}[label={sec:orgb0284fe}]{problem}
 In a quantised (pixelated or discrete) 2d plane, find
 the set of points that visually approximate a given
 curve, say a straight line or a conic.
 \end{frame}
 
-\begin{frame}[label={sec:org40379aa}]{method}
+\begin{frame}[label={sec:org2d891c0}]{method}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 Iteratively, increment along one axes, \\[0pt]
@@ -271,9 +272,132 @@ Increment if required.
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org21d6b70}]{example}
+\begin{frame}[label={sec:org9fac7cb}]{example}
 \begin{center}
-\includegraphics[width=0.65\linewidth]{images/basic-midpoint-algo.png}
+\includegraphics[width=0.8\linewidth]{images/basic-midpoint-algo.png}
 \end{center}
 \end{frame}
+
+\begin{frame}[label={sec:orgf373e9b}]{example}
+\begin{center}
+\includegraphics[width=\linewidth]{images/0--mid-point-algo_annotated.png}
+\end{center}
+\end{frame}
+
+\subsection{Straight Line}
+\label{sec:org3a89807}
+\begin{frame}[label={sec:org1563bcd}]{generic algo}
+\begin{algorithm}[H]
+  \caption{Generic Mid-point Algorithm}
+  \DontPrintSemicolon
+  \KwIn{$x_0,x_{\mathrm{max}}\in\mathbb{Z}$\hfill\scriptsize
+    Start and end x-coordinates.}
+
+  \KwIn{$F:\mathbb{R}^2\to\mathbb{R}$ \hfill
+    \scriptsize Signed Distance Function from the curve.}
+
+  \KwOut{$C \equiv
+    \{\mathbf{p}_0,\ldots,\mathbf{p}_{\mathrm{max}} \}
+    \subset \mathbb{Z}^2$ \hfill \scriptsize Curve in
+    discrete 2D space.}
+
+  {$\mathbf{p}_0 \gets \begin{bmatrix} x_0 \\ \lceil
+    y_0\rceil \end{bmatrix} \vdash F\left(\begin{matrix}
+      x_0 \\ y_0 \end{matrix}\right) = 0$}
+
+
+\For{$t\in\{1,\ldots,\mathrm{max}\}$}{
+  $\mathbf{p}_{\mathrm{mid}}\gets\mathbf{p}_{t-1}+\begin{pmatrix}1\\
+    \frac12\end{pmatrix}$
+
+  $\delta_t\gets I[F(\mathbf{p}_{\mathrm{mid}})<0]$
+
+  $\mathbf{p}_{t}\gets\mathbf{p}_{t-1}+\begin{pmatrix}
+    1 \\ \delta_{t} \end{pmatrix}$
+  }
+\end{algorithm}
+\end{frame}
+
+\begin{frame}[label={sec:org5e9915b}]{mid-point algo for st. line}
+\begin{algorithm}[H]
+  \caption{Mid-Point Algorithm for Straight Line (intermediate attempt)}
+  \DontPrintSemicolon
+  \KwIn{$x_0,x_{\mathrm{max}}\in\mathbb{Z}$\hfill\scriptsize
+    Start and end x-coordinates.}
+
+  \KwIn{$a,b,c\in\mathbb{Z}: 0\leqslant a < b;
+    b\;\mathrm{even}$ \hfill \scriptsize Coefficients:
+    $F(x,y)=ax-by+c$. \textbf{Rem:} \alert{$-by$}.}
+
+  \KwOut{$C \equiv
+    \{(x_0,y_0),\ldots,(x_{\mathrm{max}},y_{\mathrm{max}})
+    \} \subset \mathbb{Z}^2$ \\\scriptsize An ordered
+    sequence; a curve in discrete 2D space.}
+
+  $y_0\gets\lceil\frac{ax_0+c}{b}\rceil$
+  
+  $\delta_0\gets ax_0-by_0- \frac b2 +c$
+  \hfill{\scriptsize \textbf{Rem:}
+    \alert{$-by_0 - \frac b2$}; $\frac b2\in\mathbb{Z}$
+    because $b$ even.}
+
+  \For{$t\in\{1,\ldots,\mathrm{max}\}$}{
+    $x_t\gets x_{t-1} + 1$
+
+    $\delta_t\gets \delta_{t-1} + a -
+    b\cdot I[\delta_{t-1}<0]$
+
+    $y_t \gets y_{t-1} + I[\delta_t<0]$
+  }
+\end{algorithm}
+\end{frame}
+
+\begin{frame}[label={sec:org1277261}]{mid-point algo for st. line}
+\begin{algorithm}[H]
+  \caption{Mid-Point Algorithm for Straight Line}
+  \DontPrintSemicolon
+  \KwIn{$x_0,x_{\mathrm{max}}\in\mathbb{Z}$\hfill\scriptsize
+    Start and end x-coordinates.}
+
+  \KwIn{$a,b,c\in\mathbb{Z}: 0\leqslant a < b;
+    b\;\mathrm{even}$ \hfill \scriptsize Coefficients:
+    $F(x,y)=ax-by+c$. \textbf{Rem:} \alert{$-by$}.}
+
+  \KwOut{$C \equiv
+    \{(x_0,y_0),\ldots,(x_{\mathrm{max}},y_{\mathrm{max}})
+    \} \subset \mathbb{Z}^2$ \\\scriptsize An ordered
+    sequence; a curve in discrete 2D space.}
+
+  \textbf{Init:} $C$ as a new Array.
+
+  \textbf{Init:} $x,y,\delta$ as integers.
+
+  $x\gets x_0$
+
+  $y\gets\lceil\frac{ax+c}{b}\rceil$
+  
+  $\delta\gets ax-by- \frac b2 +c$
+  \hfill{\scriptsize \textbf{Rem:}
+    \alert{$-by - \frac b2$}; $\frac b2\in\mathbb{Z}$
+    because $b$ even.}
+
+  $C\cdot$ Push($(x,y)$)
+
+  \For{$t\in\{1,\ldots,\mathrm{max}\}$}{
+    $x\gets x + 1$
+
+    $\delta\gets \delta + a -
+    b\cdot I[\delta<0]$
+
+    $y \gets y + I[\delta<0]$
+
+    $C\cdot$ Push($(x,y)$)
+  }
+\end{algorithm}
+\end{frame}
+
+\subsection{Circle}
+\label{sec:org78aa25c}
+
+\againframe{sec:org1563bcd}
 \end{document}
