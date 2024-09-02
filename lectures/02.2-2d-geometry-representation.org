@@ -219,7 +219,31 @@ Increment if required.
 #+attr_latex: :width \linewidth
 [[file:images/0--mid-point-algo_annotated.png]]
 
-** Straight Line
+*** conditions for application of mid-point algorithm
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .45
+:END:
+Mid-point algorithm is applicable to a curve within a
+given finite interval, *iff*
+
+1. The curve increases monotonically;
+2. The curve increases gradually.
+
+
+In other words,
+\begin{align}
+  \notag
+  0 &\leqslant \mathrm{d}y \leqslant \mathrm{d}x
+\end{align}
+
 *** generic algo
 
 \begin{algorithm}[H]
@@ -252,6 +276,28 @@ Increment if required.
   }
 \end{algorithm}
 
+
+** Straight Line
+
+*** characterising straight lines
+
+\begin{align*}
+  F(x,y)
+  &= Ax-By+C \\
+  0 \leqslant \mathrm{d}y / \mathrm{d}x \leqslant 1 \quad
+  &\mapsto \quad 0 \leqslant A \leqslant B
+  &&\textsc{\ldots case 1} \\
+  -1 \leqslant \mathrm{d}y / \mathrm{d}x \leqslant 0 \quad
+  &\mapsto \quad 0 \leqslant A \leqslant -B
+  &&\textsc{\ldots case 2} \\
+  0 \leqslant \mathrm{d}x / \mathrm{d}y \leqslant 1 \quad
+  &\mapsto \quad 0 \leqslant B \leqslant A
+  &&\textsc{\ldots case 3} \\
+  -1 \leqslant \mathrm{d}x / \mathrm{d}y \leqslant 0 \quad
+  &\mapsto \quad 0 \leqslant -B \leqslant A
+  &&\textsc{\ldots case 4}
+\end{align*}
+
 *** mid-point algo for st. line
 
 # \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
@@ -261,7 +307,7 @@ Increment if required.
   \KwIn{$x_0,x_{\mathrm{max}}\in\mathbb{Z}$\hfill\scriptsize
     Start and end x-coordinates.}
 
-  \KwIn{$a,b,c\in\mathbb{Z}: 0\leqslant a < b;
+  \KwIn{$a,b,c\in\mathbb{Z} \vdash 0\leqslant a < b;
     b\;\mathrm{even}$ \hfill \scriptsize Coefficients:
     $F(x,y)=ax-by+c$. \textbf{Rem:} \alert{$-by$}.}
 
@@ -296,7 +342,7 @@ Increment if required.
   \KwIn{$x_0,x_{\mathrm{max}}\in\mathbb{Z}$\hfill\scriptsize
     Start and end x-coordinates.}
 
-  \KwIn{$a,b,c\in\mathbb{Z}: 0\leqslant a < b;
+  \KwIn{$a,b,c\in\mathbb{Z} \vdash 0\leqslant a < b;
     b\;\mathrm{even}$ \hfill \scriptsize Coefficients:
     $F(x,y)=ax-by+c$. \textbf{Rem:} \alert{$-by$}.}
 
@@ -332,6 +378,7 @@ Increment if required.
   }
 \end{algorithm}
 
+*** 
 ** Circle
 
 ***                                                          :B_againframe:
@@ -340,3 +387,5 @@ Increment if required.
 :BEAMER_ref: *generic algo
 :BEAMER_act:
 :END:
+
+*** 

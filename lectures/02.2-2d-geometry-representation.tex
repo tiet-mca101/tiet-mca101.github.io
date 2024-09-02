@@ -1,4 +1,4 @@
-% Created 2024-08-31 Sat 13:46
+% Created 2024-09-02 Mon 09:34
 % Intended LaTeX compiler: pdflatex
 \documentclass[aspectratio=169,xcolor={dvipsnames,svgnames}]{beamer}
 \usepackage[utf8x]{inputenc}
@@ -105,12 +105,12 @@ CSED TIET Patiala India.
 \maketitle
 
 \section{2d geometry --- introduction}
-\label{sec:orgf2d24ea}
+\label{sec:org031ee22}
 
 \subsection{Straight Lines}
-\label{sec:org7dac36a}
+\label{sec:orgf44613e}
 
-\begin{frame}[label={sec:orgb8540b1}]{\(y = mx + c\)}
+\begin{frame}[label={sec:org512e054}]{\(y = mx + c\)}
 \begin{align}
   \notag
   y = f(x) &= mx + c
@@ -121,7 +121,7 @@ CSED TIET Patiala India.
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orgfdbad4b}]{parametric form}
+\begin{frame}[label={sec:org099c456}]{parametric form}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 For any two vectors \(\mathbf{u},\mathbf{v}\in V\), a
@@ -136,7 +136,7 @@ parameterised by \(t\in[0,1]\), as
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:orgedaae96}]{parametric form}
+\begin{frame}[label={sec:orge7ec8cc}]{parametric form}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 Any point on a line in the direction of unit vector
@@ -152,7 +152,7 @@ point \(\mathbf{p}_0\) may be given parameterised by
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:orga6b9c79}]{hesse normal form}
+\begin{frame}[label={sec:orga97ff4f}]{hesse normal form}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 \begin{center}
@@ -183,10 +183,10 @@ of all points \(\mathbf{p}\) that satisfy,
 \end{frame}
 
 \subsection{Conics}
-\label{sec:org7e64a2e}
+\label{sec:orgaa7a04b}
 
 
-\begin{frame}[label={sec:org3618730}]{circle}
+\begin{frame}[label={sec:org8a945d5}]{circle}
 \begin{columns}
 \begin{column}{.4\columnwidth}
 \begin{figure}[htbp]
@@ -213,7 +213,7 @@ Parametric Form:
 \end{column}
 \end{columns}
 \end{frame}
-\begin{frame}[label={sec:orgc312cb9}]{ellipse}
+\begin{frame}[label={sec:org2d38585}]{ellipse}
 \begin{columns}
 \begin{column}{.4\columnwidth}
 \begin{figure}[htbp]
@@ -244,18 +244,18 @@ Parametric Form
 
 
 \section{mid-point algorithm}
-\label{sec:orgb152873}
+\label{sec:org7f99154}
 
 \subsection{Fundamentals}
-\label{sec:org664851e}
+\label{sec:org8b6be91}
 
-\begin{frame}[label={sec:orgb0284fe}]{problem}
+\begin{frame}[label={sec:org1219b3f}]{problem}
 In a quantised (pixelated or discrete) 2d plane, find
 the set of points that visually approximate a given
 curve, say a straight line or a conic.
 \end{frame}
 
-\begin{frame}[label={sec:org2d891c0}]{method}
+\begin{frame}[label={sec:orgb9d85e3}]{method}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 Iteratively, increment along one axes, \\[0pt]
@@ -272,21 +272,40 @@ Increment if required.
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org9fac7cb}]{example}
+\begin{frame}[label={sec:org6739222}]{example}
 \begin{center}
 \includegraphics[width=0.8\linewidth]{images/basic-midpoint-algo.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orgf373e9b}]{example}
+\begin{frame}[label={sec:org27b0457}]{example}
 \begin{center}
 \includegraphics[width=\linewidth]{images/0--mid-point-algo_annotated.png}
 \end{center}
 \end{frame}
 
-\subsection{Straight Line}
-\label{sec:org3a89807}
-\begin{frame}[label={sec:org1563bcd}]{generic algo}
+\begin{frame}[label={sec:orgd807adb}]{conditions for application of mid-point algorithm}
+\begin{columns}
+\begin{column}{.45\columnwidth}
+Mid-point algorithm is applicable to a curve within a
+given finite interval, \alert{iff}
+
+\begin{enumerate}
+\item The curve increases monotonically;
+\item The curve increases gradually.
+\end{enumerate}
+
+
+In other words,
+\begin{align}
+  \notag
+  0 &\leqslant \mathrm{d}y \leqslant \mathrm{d}x
+\end{align}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[label={sec:org40b3ecc}]{generic algo}
 \begin{algorithm}[H]
   \caption{Generic Mid-point Algorithm}
   \DontPrintSemicolon
@@ -318,14 +337,37 @@ Increment if required.
 \end{algorithm}
 \end{frame}
 
-\begin{frame}[label={sec:org5e9915b}]{mid-point algo for st. line}
+
+\subsection{Straight Line}
+\label{sec:orgc8fc694}
+
+\begin{frame}[label={sec:org997e59d}]{characterising straight lines}
+\begin{align*}
+  F(x,y)
+  &= Ax-By+C \\
+  0 \leqslant \mathrm{d}y / \mathrm{d}x \leqslant 1 \quad
+  &\mapsto \quad 0 \leqslant A \leqslant B
+  &&\textsc{\ldots case 1} \\
+  -1 \leqslant \mathrm{d}y / \mathrm{d}x \leqslant 0 \quad
+  &\mapsto \quad 0 \leqslant A \leqslant -B
+  &&\textsc{\ldots case 2} \\
+  0 \leqslant \mathrm{d}x / \mathrm{d}y \leqslant 1 \quad
+  &\mapsto \quad 0 \leqslant B \leqslant A
+  &&\textsc{\ldots case 3} \\
+  -1 \leqslant \mathrm{d}x / \mathrm{d}y \leqslant 0 \quad
+  &\mapsto \quad 0 \leqslant -B \leqslant A
+  &&\textsc{\ldots case 4}
+\end{align*}
+\end{frame}
+
+\begin{frame}[label={sec:org335478d}]{mid-point algo for st. line}
 \begin{algorithm}[H]
   \caption{Mid-Point Algorithm for Straight Line (intermediate attempt)}
   \DontPrintSemicolon
   \KwIn{$x_0,x_{\mathrm{max}}\in\mathbb{Z}$\hfill\scriptsize
     Start and end x-coordinates.}
 
-  \KwIn{$a,b,c\in\mathbb{Z}: 0\leqslant a < b;
+  \KwIn{$a,b,c\in\mathbb{Z} \vdash 0\leqslant a < b;
     b\;\mathrm{even}$ \hfill \scriptsize Coefficients:
     $F(x,y)=ax-by+c$. \textbf{Rem:} \alert{$-by$}.}
 
@@ -352,14 +394,14 @@ Increment if required.
 \end{algorithm}
 \end{frame}
 
-\begin{frame}[label={sec:org1277261}]{mid-point algo for st. line}
+\begin{frame}[label={sec:org432c274}]{mid-point algo for st. line}
 \begin{algorithm}[H]
   \caption{Mid-Point Algorithm for Straight Line}
   \DontPrintSemicolon
   \KwIn{$x_0,x_{\mathrm{max}}\in\mathbb{Z}$\hfill\scriptsize
     Start and end x-coordinates.}
 
-  \KwIn{$a,b,c\in\mathbb{Z}: 0\leqslant a < b;
+  \KwIn{$a,b,c\in\mathbb{Z} \vdash 0\leqslant a < b;
     b\;\mathrm{even}$ \hfill \scriptsize Coefficients:
     $F(x,y)=ax-by+c$. \textbf{Rem:} \alert{$-by$}.}
 
@@ -396,8 +438,13 @@ Increment if required.
 \end{algorithm}
 \end{frame}
 
+\begin{frame}[label={sec:org415da02}]{}
+\end{frame}
 \subsection{Circle}
-\label{sec:org78aa25c}
+\label{sec:orgc5aee12}
 
-\againframe{sec:org1563bcd}
+\againframe{sec:org40b3ecc}
+
+\begin{frame}[label={sec:org62c78f6}]{}
+\end{frame}
 \end{document}
