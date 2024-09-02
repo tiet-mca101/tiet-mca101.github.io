@@ -6,6 +6,12 @@
 
 #+include: preamble.org
 #+beamer_header: \setbeamercovered{transparent}
+#+beamer_header: \makeatletter
+#+beamer_header: \newcommand{\RemoveAlgoNumber}{\renewcommand{\fnum@algocf}{\AlCapSty{\AlCapFnt\algorithmcfname}}}
+#+beamer_header: \newcommand{\RevertAlgoNumber}{\algocf@resetfnum}
+#+beamer_header: \makeatother
+#+beamer_header: \SetKwProg{Fn}{Function}{ is}{end}
+#+beamer_header: \SetKwBlock{Cont}{}{end}
 
 * 2d geometry --- introduction
 
@@ -184,6 +190,17 @@ Parametric Form
 
 *** problem
 
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .5
+:END:
 In a quantised (pixelated or discrete) 2d plane, find
 the set of points that visually approximate a given
 curve, say a straight line or a conic.
@@ -298,87 +315,326 @@ In other words,
   &&\textsc{\ldots case 4}
 \end{align*}
 
-*** mid-point algo for st. line
-
-# \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
-\begin{algorithm}[H]
-  \caption{Mid-Point Algorithm for Straight Line (intermediate attempt)}
-  \DontPrintSemicolon
-  \KwIn{$x_0,x_{\mathrm{max}}\in\mathbb{Z}$\hfill\scriptsize
-    Start and end x-coordinates.}
-
-  \KwIn{$a,b,c\in\mathbb{Z} \vdash 0\leqslant a < b;
-    b\;\mathrm{even}$ \hfill \scriptsize Coefficients:
-    $F(x,y)=ax-by+c$. \textbf{Rem:} \alert{$-by$}.}
-
-  \KwOut{$C \equiv
-    \{(x_0,y_0),\ldots,(x_{\mathrm{max}},y_{\mathrm{max}})
-    \} \subset \mathbb{Z}^2$ \\\scriptsize An ordered
-    sequence; a curve in discrete 2D space.}
-
-  $y_0\gets\lceil\frac{ax_0+c}{b}\rceil$
-  
-  $\delta_0\gets ax_0-by_0- \frac b2 +c$
-  \hfill{\scriptsize \textbf{Rem:}
-    \alert{$-by_0 - \frac b2$}; $\frac b2\in\mathbb{Z}$
-    because $b$ even.}
-
-  \For{$t\in\{1,\ldots,\mathrm{max}\}$}{
-    $x_t\gets x_{t-1} + 1$
-
-    $\delta_t\gets \delta_{t-1} + a -
-    b\cdot I[\delta_{t-1}<0]$
-
-    $y_t \gets y_{t-1} + I[\delta_t<0]$
-  }
-\end{algorithm}
+[[https://tiet-mca101.github.io/lectures/images/2024-09-02-Note-08-32_annotated.pdf][Read more [...]​]]
 
 *** mid-point algo for st. line
+
+Case 1. $\alert{0<A<B}$
 
 # \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 \begin{algorithm}[H]
   \caption{Mid-Point Algorithm for Straight Line}
   \DontPrintSemicolon
-  \KwIn{$x_0,x_{\mathrm{max}}\in\mathbb{Z}$\hfill\scriptsize
-    Start and end x-coordinates.}
 
-  \KwIn{$a,b,c\in\mathbb{Z} \vdash 0\leqslant a < b;
-    b\;\mathrm{even}$ \hfill \scriptsize Coefficients:
-    $F(x,y)=ax-by+c$. \textbf{Rem:} \alert{$-by$}.}
+  \Fn(\hfill {\scriptsize Base case.}){\upshape
+    \textsc{mid-point-algo-st-line-base}\,
+    ($x_1, y_1, N, a, b, c$)}{
+    \KwIn{$x_1, y_1, N \in \mathbb{Z} \vdash 0<N$
+      \hfill \scriptsize Start coordinates and num
+      points.}
 
-  \KwOut{$C \equiv
-    \{(x_0,y_0),\ldots,(x_{\mathrm{max}},y_{\mathrm{max}})
-    \} \subset \mathbb{Z}^2$ \\\scriptsize An ordered
-    sequence; a curve in discrete 2D space.}
+    \KwIn{$a,b,c\in\mathbb{Z} \vdash 0\leqslant a < b;
+      b\;\mathrm{even}$ \hfill \scriptsize
+      Coefficients: $F(x,y)=ax\alert{-by}+c$.}
 
-  \textbf{Init:} $C$ as a new Array.
+    \KwOut{$C \equiv
+      \{(x_1,y_1),\ldots,(x_N,y_N)
+      \} \subset \mathbb{Z}^2$ \\\scriptsize An ordered
+      sequence; a curve in discrete 2D space.}
+    
+    $\delta_1\gets ax_1\alert{-by_1- \frac b2} +c$
+    \hfill{\scriptsize $\frac b2\in\mathbb{Z}$ because
+      $b$ even.}
 
-  \textbf{Init:} $x,y,\delta$ as integers.
+    \For{$t\in\{2,\ldots,N\}$}{
+      $x_t\gets x_{t-1} + 1$
 
-  $x\gets x_0$
+      $\delta_t\gets \delta_{t-1} + a - b\cdot
+      I[0\leqslant\delta_{t-1}]$
 
-  $y\gets\lceil\frac{ax+c}{b}\rceil$
-  
-  $\delta\gets ax-by- \frac b2 +c$
-  \hfill{\scriptsize \textbf{Rem:}
-    \alert{$-by - \frac b2$}; $\frac b2\in\mathbb{Z}$
-    because $b$ even.}
+      $y_t \gets y_{t-1} + I[0\leqslant\delta_t]$
+    }
 
-  $C\cdot$ Push($(x,y)$)
+    \Return{$C \equiv \{(x_1,y_1), \ldots,
+      (x_N, y_N) \}$ }
 
-  \For{$t\in\{1,\ldots,\mathrm{max}\}$}{
-    $x\gets x + 1$
-
-    $\delta\gets \delta + a -
-    b\cdot I[\delta<0]$
-
-    $y \gets y + I[\delta<0]$
-
-    $C\cdot$ Push($(x,y)$)
   }
 \end{algorithm}
 
-*** 
+*** mid-point algo for st. line
+Case 1. $\alert{0<A<B}$
+
+# \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\begin{algorithm}[H]
+  \caption{Mid-Point Algorithm for Straight Line
+    (alternate) \hfill {\scriptsize\textsc{[\ldots
+        contd]}}}
+  \DontPrintSemicolon
+  \KwIn{$x_1, y_1, N\in\mathbb{Z} \vdash 0<N$
+    \hfill \scriptsize Start and end x-coordinates.}
+
+  \KwIn{$a,b,c\in\mathbb{Z} \vdash 0\leqslant a < b;
+    b\;\mathrm{even}$ \hfill \scriptsize Coefficients:
+    $F(x,y)=ax\alert{-by}+c$.}
+
+  \KwOut{$C \equiv
+    \{(x_1,y_1),\ldots,(x_N,y_N)
+    \} \subset \mathbb{Z}^2$ \\\scriptsize An ordered
+    sequence; a curve in discrete 2D space.}
+
+  \textbf{Init:} $C\gets\emptyset$ \hfill {\scriptsize
+    Initialise as array.}
+
+  \textbf{Init:} $(x,y,\delta) \gets (x_1, y_1, 0)$
+  \hfill {\scriptsize Initialise as integers.}
+  
+  $\delta\gets ax\alert{-by- \frac b2} +c$
+  \hfill{\scriptsize $\frac b2\in\mathbb{Z}$ because
+    $b$ even.}
+
+  $C\cdot\textsc{push}\left((x,y)\right)$ \hfill
+  {\scriptsize $(x,y)$ is a tuple.}
+\end{algorithm}
+
+*** mid-point algo for st. line
+Case 1. $\alert{0<A<B}$
+
+# \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\begin{algorithm}[H]
+  \RemoveAlgoNumber
+  \setcounter{AlgoLine}{6}
+  \caption{{\scriptsize\textsc{[contd \ldots]}}
+    Mid-Point Algorithm for Straight Line (alternate)}
+
+  \For{$t\in\{2,\ldots,N\}$}{
+
+    $x\gets x + 1$ \hfill {\scriptsize Increment along
+      x-axis.}
+
+    $\delta\gets \delta + a - b\cdot I[0\leqslant\delta]$
+    \hfill {\scriptsize Update decision param
+      $\delta$.}
+
+    $y \gets y + I[0\leqslant\delta]$ \hfill {\scriptsize
+      Update along y-axis based on decision param.}
+
+    $C\cdot\textsc{push}\left((x,y)\right)$ \hfill
+    {\scriptsize $(x,y)$ is a tuple.}
+
+  }
+
+  \Return $C$
+\end{algorithm}
+
+*** mid-point algo for st. line
+
+Handle all cases (Case 2)
+# \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\begin{algorithm}[H]
+  \caption{Mid Point Algorithm for Straight Lines (all
+    cases) \hfill {\scriptsize\textsc{[\ldots contd]}}}
+  \DontPrintSemicolon
+
+  \Fn(\\ {\scriptsize A wrapper around
+    \textsc{mid-point-algo-st-line-base}}){\upshape
+    \textsc{mid-point-algo-st-line}\,
+    ($x_1,x_{\mathrm{max}},a,b,c$)}{
+
+    \KwIn{$x_1,x_{\mathrm{max}}\in\mathbb{Z} \vdash
+      x_1 < x_{\mathrm{max}}$ \hfill\scriptsize Start
+      and end x-coordinates.}
+
+    \KwIn{$a,b,c\in\mathbb{Z} \vdash a,b\,
+      \mathrm{even}$ \hfill\scriptsize SDF
+      $F(x,y) \triangleq ax \alert{-by} +c$.}
+
+    \KwOut{$\mathbb{C} \equiv \{(x_1,y_1), \ldots,
+      (x_{\mathrm{max}}, y_{\mathrm{max}})$
+      \hfill\scriptsize Collection of points on curve.}
+
+    $(y_1, y_{\mathrm{max}}) \gets \left(
+      \lceil\frac{ax_1+c}{b}\rceil,
+      \lceil\frac{ax_{\mathrm{max}}+c}{b}\rceil
+    \right)$ \hfill {\scriptsize Compute start and end
+      y-coordinates.}
+
+    \If(\hfill {\scriptsize \alert{Case 2.}
+      $F^{\,\prime} (x,y) = F(x, \alert{-y})$}){$0<a<-b$}{
+      % $(x_1^\prime, x_{\mathrm{max}}^\prime, a^\prime,
+      % b^\prime, c^\prime) \gets (x_1, x_{\mathrm{max}},
+      % a, \alert{-b}, c)$
+
+      % \Fn{Trf($x,y$)}{\Return $(x,\alert{-y})$
+      % \hfill{\scriptsize Define inverse
+      % transformation.}}      
+
+      $(x_1, y_1, N, a, b, c) \gets
+      (x_1, \alert{-y_1}, x_{\mathrm{max}}-x_1\alert{+1}, a,
+      \alert{-b}, c)$ \hfill{\scriptsize Flip about
+        x-axis.}
+
+      \textbf{define:}
+      $\textsc{trf}\, ((x, y)) \mapsto (x,\alert{-y})$
+      \hfill{\scriptsize Define inverse
+        transformation.}
+
+    }
+  }
+\end{algorithm}
+
+*** mid-point algo for st. line
+
+Handle all cases (Case 3, 4)
+# \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\begin{algorithm}[H]
+  \RemoveAlgoNumber
+  \setcounter{AlgoLine}{6}
+  \caption{{\scriptsize\textsc{[contd\ldots]}} Mid
+    Point Algorithm for Straight Lines (all cases)
+    \hfill {\scriptsize\textsc{[\ldots contd]}}}
+  \DontPrintSemicolon
+  \Cont{
+    \ElseIf(\hfill {\scriptsize \alert{Case 3.}
+      $F^{\,\prime} (x,y) = F(\alert{-y, -x})$}){$0<b<a$}{
+
+      $(x_1, y_1, N, a, b, c) \gets
+      (\alert{-y_{\mathrm{max}}}, \alert{-x_{\mathrm{max}}},
+      \alert{-y_1+y_{\mathrm{max}}}+1, \alert{b}, \alert{a},
+      c)$ \hfill {\scriptsize Transpose.}
+
+      \textbf{define:}
+      $\textsc{trf}\, ((x, y)) \mapsto (\alert{-y},
+      \alert{-x})$ \hfill {\scriptsize Define inverse
+        transformation.}
+
+    }
+
+    \ElseIf(\hfill {\scriptsize \alert{Case 4.}
+      $F^{\,\prime} (x,y) = F(\alert{-y, x})$}){$0<-b<a$}{
+
+      $(x_1, y_1, N, a, b, c) \gets
+      (\alert{y_{\mathrm{max}}}, \alert{-x_{\mathrm{max}}},
+      \alert{y_1-y_{\mathrm{max}}}+1, \alert{-b}, \alert{a},
+      c)$ \hfill {\scriptsize Both flip and transpose.}
+
+      \textbf{define:}
+      $\textsc{trf}\, ((x, y)) \mapsto (\alert{-y},
+      \alert{x})$ \hfill {\scriptsize Define inverse
+        transformation.}
+
+    }
+  }
+\end{algorithm}
+
+*** mid-point algo for st. line
+
+Handle all cases (Case 1)
+# \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\begin{algorithm}[H]
+  \RemoveAlgoNumber
+  \setcounter{AlgoLine}{13}
+  \caption{{\scriptsize\textsc{[contd\ldots]}} Mid
+    Point Algorithm for Straight Lines (all cases)}
+  \DontPrintSemicolon
+  \Cont{
+
+    \Else(\hfill {\scriptsize \alert{Case
+        1. $0<a<b$}}){
+
+      $N\gets x_{\mathrm{max}}-x_1\alert{+1}$
+
+      \textbf{define:}
+      $\textsc{trf}\, ((x, y)) \mapsto (x, y)$ \hfill
+      {\scriptsize Identity.}
+
+    }
+
+    $C \gets
+    \alert{\textsc{mid-point-algo-st-line-base} (x_1,
+      y_1, N, a, b, c)}$
+
+    $C\gets\textsc{map}(\textsc{trf}, C)$
+
+    \Return $C$
+  }
+\end{algorithm}
+
+*** exercise 1
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .5
+:END:
+
+Using Bresenham’s/ Mid-point Algorithm, compute the
+points along the following lines, between
+1. $(2,0)\to(6,2)$
+2. $(0,1)\to(6,13)$
+3. $(0,1)\to(6,-2)$
+4. $(0,4)\to(6,-8)$
+
+*** solution 1 step 1
+
+For each part, tabulate $a,b,c,
+x_1,x_{\max},y_1,y_{\max}, a',b',c',
+x_1',x_{\max}',y_1',y_{\max}', N$.
+
+| Part | $x_1$ | $y_1$ | $x_{\max}$ | $y_{\max}$ | $a$ | $b$ | $c$ | $a'$ | $b'$ | $c'$ | $x_1'$ | $y_1'$ | $x_{\max}'$ | $y_{\max}'$ | $N$ |
+|------+-------+-------+------------+------------+-----+-----+-----+------+------+------+--------+--------+-------------+-------------+-----|
+|    1 |     2 |     0 |          6 |          2 |   1 |   2 |  -2 |    1 |    2 |   -2 |      2 |      0 |           6 |           2 |   5 |
+|    2 |     0 |     1 |          6 |         13 |   2 |   1 |   1 |    1 |    2 |    1 |    -13 |     -6 |          -1 |           0 |  13 |
+|    3 |     0 |     1 |          6 |         -2 |   1 |  -2 |  -2 |    1 |    2 |   -2 |      0 |     -1 |           6 |           2 |   7 |
+|    4 |     0 |     4 |          6 |         -8 |   2 |  -1 |  -4 |    1 |    2 |   -4 |     -8 |     -6 |           4 |           0 |  13 |
+|------+-------+-------+------------+------------+-----+-----+-----+------+------+------+--------+--------+-------------+-------------+-----|
+
+*** solution 1 step 2
+
+Compute the table of $x,y,\delta,I[0\leqslant\delta]$
+for each iteration from $1$ to $N$.  Subsequently
+compute $\textsc{trf}\,(x,y)$.\\
+Showing here for part 4.
+
+| $x_1'$ | $y_1'$ | $N$ | $a'$ | $b'$ | $c'$ | $\delta_{1}$ |
+|--------+--------+-----+------+------+------+--------------|
+|     -8 |     -6 |  13 |    1 |    2 |   -4 |           -1 |
+
+
+| Iteration                                   |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 | 10 | 11 | 12 | 13 |
+|---------------------------------------------+----+----+----+----+----+----+----+----+----+----+----+----+----|
+| $x_t'\gets x_{t-1}'+1$                      | -8 | -7 | -6 | -5 | -4 | -3 | -2 | -1 |  0 |  1 |  2 |  3 |  4 |
+| $\delta_{t}\gets \delta_{t-1}+a'-b'c_{t-1}$ | -1 |  0 | -1 |  0 | -1 |  0 | -1 |  0 | -1 |  0 | -1 |  0 | -1 |
+| $c_{t}\gets I[0\leqslant\delta_{t}]$        |  0 |  1 |  0 |  1 |  0 |  1 |  0 |  1 |  0 |  1 |  0 |  1 |  0 |
+| $y_{t}'\gets y_{t-1}'+c_t$                  | -6 | -5 | -5 | -4 | -4 | -3 | -3 | -2 | -2 | -1 | -1 |  0 |  0 |
+|---------------------------------------------+----+----+----+----+----+----+----+----+----+----+----+----+----|
+| $x\gets -y'$                                |  6 |  5 |  5 |  4 |  4 |  3 |  3 |  2 |  2 |  1 |  1 |  0 |  0 |
+| $y\gets x'$                                 | -8 | -7 | -6 | -5 | -4 | -3 | -2 | -1 |  0 |  1 |  2 |  3 |  4 |
+#+TBLFM: 
+
+*** exercise 2 (practical)
+
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .5
+:END:
+
+1. Can the calculations be done using an online
+   spreadsheet with formulae?
+2. Can the complete algorithm be encoded on a
+   spreadsheet?
+
 ** Circle
 
 ***                                                          :B_againframe:
@@ -388,4 +644,6 @@ In other words,
 :BEAMER_act:
 :END:
 
-*** 
+*** mid-point algo for circle
+\centering
+Coming Soon
