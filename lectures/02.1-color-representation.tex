@@ -1,4 +1,4 @@
-% Created 2024-08-23 Fri 12:58
+% Created 2024-09-03 Tue 09:49
 % Intended LaTeX compiler: pdflatex
 \documentclass[aspectratio=169,xcolor={dvipsnames,svgnames}]{beamer}
 \usepackage[utf8x]{inputenc}
@@ -18,6 +18,7 @@
 \usepackage{varwidth}
 \usepackage[Export]{adjustbox}
 %\usepackage{enumitem}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 \graphicspath{ {./careful-Isaac-Images/} {./org-download-images/} }
 \usepackage[date=year,%
 backend=biber,%
@@ -104,9 +105,9 @@ CSED TIET Patiala India.
 \maketitle
 
 \section{colours --- introduction}
-\label{sec:org2d81992}
+\label{sec:org92a7174}
 
-\begin{frame}[label={sec:org0fff22c}]{what are colours}
+\begin{frame}[label={sec:org215904e}]{what are colours}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 \begin{quote}
@@ -129,7 +130,7 @@ related to an object's \alert{light absorption},
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org49adc62}]{rgb colours}
+\begin{frame}[label={sec:org868abc7}]{rgb colours}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 \begin{quote}
@@ -155,7 +156,7 @@ light spectrum with three types of cone cells
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:orgf2b6bd6}]{visible spectrum}
+\begin{frame}[label={sec:org0b372c8}]{visible spectrum}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{images/Visible_spectrum_390-710_nm_linear_perceptual.svg.png}
@@ -163,7 +164,7 @@ light spectrum with three types of cone cells
 \end{figure}
 \end{frame}
 
-\begin{frame}[label={sec:org9c9872a}]{rgb/a representation}
+\begin{frame}[label={sec:orgcc24d32}]{rgb/a representation}
 A colour in machine representation is
 \begin{itemize}
 \item a 3-vector for RGB,  i.e.
@@ -184,9 +185,9 @@ fixed-point representation.
 \end{frame}
 
 \subsection{Image Representation}
-\label{sec:orga2d0da8}
+\label{sec:orgb599fd4}
 
-\begin{frame}[label={sec:orgcef61b6}]{an image as composition of pixels}
+\begin{frame}[label={sec:org3a87706}]{an image as composition of pixels}
 \begin{columns}
 \begin{column}{.67\columnwidth}
 \begin{itemize}
@@ -203,7 +204,7 @@ image.
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:orgf7ddfd4}]{an image as a bounded space}
+\begin{frame}[label={sec:org70a4177}]{an image as a bounded space}
 \begin{columns}
 \begin{column}{.67\columnwidth}
 \begin{itemize}
@@ -224,7 +225,7 @@ quantised and bounded spatial signal}.
 \end{frame}
 
 
-\begin{frame}[label={sec:org7796ac1}]{image channels}
+\begin{frame}[label={sec:orgfc55c46}]{image channels}
 \begin{columns}
 \begin{column}{.67\columnwidth}
 \begin{itemize}
@@ -241,7 +242,7 @@ image is called a hyper-spectral image.
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org17d7804}]{image in floating-point representation}
+\begin{frame}[label={sec:org6e8d88d}]{image in floating-point representation}
 \begin{columns}
 \begin{column}{.67\columnwidth}
 A floating-point may be 16-bit, 32-bit or 64-bit per
@@ -270,7 +271,7 @@ H\times W}\).
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:orgece9a86}]{image in 8-bit fixed-point}
+\begin{frame}[label={sec:orgde60624}]{image in 8-bit fixed-point}
 \begin{columns}
 \begin{column}{.67\columnwidth}
 A fixed-point may be 8-bit, 16-bit, 32-bit or 64-bit
@@ -298,7 +299,7 @@ is represented as
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org4487b3b}]{question}
+\begin{frame}[label={sec:orgfd159c2}]{question}
 \begin{enumerate}
 \item How is a grayscale image with resolution \(H\times W\)
 with floating-point representation described
@@ -312,7 +313,7 @@ mathematically?
 \end{enumerate}
 \end{frame}
 
-\begin{frame}[label={sec:org306d285}]{question}
+\begin{frame}[label={sec:orgf57e3cd}]{question}
 \begin{enumerate}
 \item What is the minimum size (in bytes) required to store an
 uncompressed RGB image in FHD resolution. Assume the
@@ -324,9 +325,9 @@ resolution. Assume the image header to be \(H\) bytes.
 \end{frame}
 
 \section{colour tables}
-\label{sec:org926c0c8}
+\label{sec:org315a89c}
 
-\begin{frame}[label={sec:org461a496}]{colour tables}
+\begin{frame}[label={sec:orgd179344}]{colour tables}
 \begin{columns}
 \begin{column}{.67\columnwidth}
 In order to improve storage efficiency of images,
@@ -347,7 +348,7 @@ the colour table, \(n\times3\) bytes
 \end{column}
 \end{columns}
 \end{frame}
-\begin{frame}[label={sec:org4e24197}]{storage efficiency}
+\begin{frame}[label={sec:orgd74e1eb}]{storage efficiency}
 \begin{columns}
 \begin{column}{.67\columnwidth}
 For example,
@@ -364,7 +365,7 @@ whereas
 \end{column}
 \end{columns}
 \end{frame}
-\begin{frame}[label={sec:org9ffb8c9}]{storage efficiency}
+\begin{frame}[label={sec:org4833691}]{storage efficiency}
 \begin{columns}
 \begin{column}{.67\columnwidth}
 \begin{center}
@@ -386,7 +387,7 @@ Num Bits & Max Num Colours\\[0pt]
 \end{frame}
 
 
-\begin{frame}[label={sec:orgf268ed3}]{question}
+\begin{frame}[label={sec:org9de940d}]{question}
 \begin{columns}
 \begin{column}{.67\columnwidth}
 What is the minimum size (in bytes) of storage required
@@ -397,9 +398,9 @@ RGB-colours? Assume the image header to be \(H\) bytes.
 \end{frame}
 
 \section{colour spaces}
-\label{sec:org6df1653}
+\label{sec:org04ded5b}
 
-\begin{frame}[label={sec:orgc5cc1c1}]{hsl and hsv}
+\begin{frame}[label={sec:org3c6f465}]{hsl and hsv}
 \begin{columns}
 \begin{column}{.4\columnwidth}
 \begin{figure}[htbp]
@@ -411,7 +412,7 @@ RGB-colours? Assume the image header to be \(H\) bytes.
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org8ec1b5f}]{cmyk (print technology)}
+\begin{frame}[label={sec:org78cc9f3}]{cmyk (print technology)}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 \begin{figure}[htbp]
@@ -431,7 +432,7 @@ RGB-colours? Assume the image header to be \(H\) bytes.
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:orgc9b585f}]{rgb vs cmyk}
+\begin{frame}[label={sec:org18a3fdb}]{rgb vs cmyk}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 \begin{center}
@@ -452,7 +453,7 @@ Image Courtesy: \href{https://commons.wikimedia.org/wiki/File:RGB\_and\_CMYK\_co
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:orgf83cb5a}]{colour mixing: additive vs subtractive}
+\begin{frame}[label={sec:org98e45e0}]{colour mixing: additive vs subtractive}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 \textsc{additive colour mixing} \\[0pt]
@@ -479,7 +480,7 @@ together to turn the paper black.
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:orgeb1b8fc}]{other colour spaces}
+\begin{frame}[label={sec:org0f96d8a}]{other colour spaces}
 \begin{enumerate}
 \item Munsell (Munsell Colour System)
 \item Pantone (Pantone Matching System)
@@ -493,12 +494,12 @@ together to turn the paper black.
 \end{frame}
 
 \section{Interpolation}
-\label{sec:org9d32781}
+\label{sec:orgbfc2d4f}
 
 \subsection{Linear Interpolation}
-\label{sec:org654cbd6}
+\label{sec:orgea2efd0}
 
-\begin{frame}[label={sec:org1cb4518}]{linear interpolation}
+\begin{frame}[label={sec:org27fb44d}]{linear interpolation}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 Point on straight line segment connecting vectors
@@ -522,7 +523,7 @@ Point on straight line segment connecting vectors
 \end{frame}
 
 
-\begin{frame}[label={sec:orgf934f80}]{linear interpolation}
+\begin{frame}[label={sec:orgafb95cd}]{linear interpolation}
 \begin{columns}
 \begin{column}{.3\columnwidth}
 \alert{Question} \\[0pt]
@@ -561,7 +562,7 @@ Hence,
 
 
 
-\begin{frame}[label={sec:org40e1bea}]{linear interpolation}
+\begin{frame}[label={sec:org766f1d9}]{linear interpolation}
 \begin{columns}
 \begin{column}{.3\columnwidth}
 \alert{Question} \\[0pt]
@@ -603,9 +604,9 @@ Hence,
 
 
 \subsection{Barycentric Interpolation}
-\label{sec:org98b3d48}
+\label{sec:org4aaf7e3}
 
-\begin{frame}[label={sec:org0933688}]{barycentric coordinates}
+\begin{frame}[label={sec:org2fb5744}]{barycentric coordinates}
 \begin{columns}
 \begin{column}{.3\columnwidth}
 \begin{figure}[htbp]
@@ -624,7 +625,7 @@ where \(\lambda_{a} + \lambda_{b} + \lambda_{c} = 1\).
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org3882b62}]{barycentric coordinates}
+\begin{frame}[label={sec:org0c3ab12}]{barycentric coordinates}
 \begin{columns}
 \begin{column}{.3\columnwidth}
 \begin{figure}[htbp]

@@ -635,6 +635,9 @@ Showing here for part 4.
 2. Can the complete algorithm be encoded on a
    spreadsheet?
 
+*** solution 2
+\centering
+[[https://docs.google.com/spreadsheets/d/13s1unOAzBQmYA4SF9ifBtw02AEAUlfRTaOvl4m2cbEc/edit?usp=sharing][[Link to Spreadsheet]​]]
 ** Circle
 
 ***                                                          :B_againframe:
