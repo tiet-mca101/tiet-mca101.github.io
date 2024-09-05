@@ -640,6 +640,203 @@ Showing here for part 4.
 [[https://docs.google.com/spreadsheets/d/13s1unOAzBQmYA4SF9ifBtw02AEAUlfRTaOvl4m2cbEc/edit?usp=sharing][[Link to Spreadsheet]​]]
 ** Circle
 
+
+*** symmetry
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .45
+:END:
+#+caption: We choose 8-way symmetry of the circle for computational efficiency.
+[[file:images/circle-8way.png]]
+
+*** efficient computation
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .45
+:END:
+#+caption: We choose 8-way symmetry of the circle for computational efficiency.
+[[file:images/circle-8way.png]]
+
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .55
+:END:
+
+Computing the points on any one of the eight
+symmetrical sectors (*octant*), gives us the points on
+the other seven.
+
+Let $(x,y)$ be the point on one octant, the other seven
+are given as,
+1. $(x,-y)$
+2. $(-x,y)$
+3. $(-x,-y)$
+4. $(y,x)$
+5. $(y,-x)$
+6. $(-y,x)$
+7. $(-y,-x)$
+
+*** setup
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .4
+:END:
+
+
+#+DOWNLOADED: screenshot @ 2024-09-03 21:50:20
+[[file:org-download-images/mid-point_algorithm/2024-09-03_21-50-20_screenshot.png]]
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .6
+:END:
+
+Given a circle with radius $r$, centred at origin, we
+intend to compute the points on (or nearest to) the
+circle within the octant defined by end points,
+
+\begin{align*}
+  \begin{bmatrix} x_1 \\ y_1 \end{bmatrix}
+  &= \begin{bmatrix} 0 \\ -r \end{bmatrix} \\
+  \begin{bmatrix} x_N \\ y_N \end{bmatrix}
+  &= \begin{bmatrix} \lceil\frac{r}{\sqrt{2}}\rceil \\
+    -\lceil\frac{r}{\sqrt{2}}\rceil \end{bmatrix}
+\end{align*}
+
+
+*** at iteration $t$
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .4
+:END:
+
+
+#+DOWNLOADED: screenshot @ 2024-09-03 22:08:34
+[[file:org-download-images/mid-point_algorithm/2024-09-03_22-08-34_screenshot.png]]
+
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .6
+:END:
+
+\begin{align*}
+  F(x, y) &= x^2 + y^2 - r^2
+\end{align*}
+
+At timestep $t$, let $(x_{t}, y_{t})$ be the point
+closest to the curve given by $F(x,y)=0$.
+*** at iteration $t+1$
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .4
+:END:
+
+
+#+DOWNLOADED: screenshot @ 2024-09-03 22:08:34
+[[file:org-download-images/mid-point_algorithm/2024-09-03_22-08-34_screenshot.png]]
+
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .6
+:END:
+\begin{align*}
+  \alert{x_{t+1}}
+  &= x_{t} + 1 \\
+  \alert{y_{t+1}}
+  &= y_{t} + I[\delta_{t+1}>0]
+    \only<2-4>{ \\
+  \delta_{t+1}
+  &= F(x_{t}+1,y_{t}+\frac12) \\
+  &= x_t^2 + 2x_t+1+y_t^2+y_t+\frac14-r^2}
+    \only<3-4>{ \\
+  \delta_t
+  &= F(x_{t-1}+1,y_{t-1}+\frac12) =
+    F(x_{t},y_{t-1}+\frac12) \\
+  &= x_t^2+y_{t-1}^2+y_{t-1}+\frac14-r^2 }
+    \only<4-5>{ \\
+  \delta_{t+1}-\delta_t
+  &= 2x_t+1+(y_{t}-y_{t-1})(y_{t}+y_{t-1}+1) }
+    \only<5-6>{ \\
+  \alert{\delta_{t+1}}
+  &= \delta_t + 2x_t+1 + I[\delta_t>0]\cdot(2y_t)
+    }
+\end{align*}
+
+*** boundary conditions
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .3
+:END:
+[[file:org-download-images/mid-point_algorithm/2024-09-03_21-50-20_screenshot.png]]
+
+\begin{align*}
+  \begin{bmatrix} x_1 & x_N \\ y_1 & y_N \end{bmatrix}
+  &= \begin{bmatrix}
+    0 & \lceil\frac{r}{\sqrt{2}}\rceil \\
+    -r & -\lceil\frac{r}{\sqrt{2}}\rceil \end{bmatrix}
+\end{align*}
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .35
+:END:
+[[file:org-download-images/mid-point_algorithm/2024-09-03_22-08-34_screenshot.png]]
+\begin{align*}
+  \delta_2 &= F(x_{2},y_{1}+\frac12) &&= F(1,-r+\frac12) \\
+           &= 1-r+\frac14 &&\approx 1-r
+\end{align*}
+
+  
 ***                                                          :B_againframe:
 :PROPERTIES:
 :BEAMER_env: againframe
@@ -647,6 +844,169 @@ Showing here for part 4.
 :BEAMER_act:
 :END:
 
-*** mid-point algo for circle
-\centering
-Coming Soon
+*** midpoint algo for circle octant
+
+\begin{algorithm}[H]
+  \caption{Mid-Point Algorithm for Circle Octant}
+  \DontPrintSemicolon
+
+  \Fn(\hfill {\scriptsize Base case.}){\upshape
+    $\textsc{mid-point-algo-octant}\, (r)$}{
+    \KwIn{$r \in \mathbb{Z} \vdash 0<r$ \hfill
+      \scriptsize Radius of the circle.}
+
+    \KwOut{$C \equiv \{(x_1,y_1),\ldots,(x_N,y_N) \}
+      \subset \mathbb{Z}^2$ \\\scriptsize An ordered
+      sequence; a curve in discrete 2D space.}
+
+    $C\gets\emptyset$ \hfill {\scriptsize Initialise
+      array.}
+
+    $(x,y,\delta,N) \gets (0, -r, 1-r, \lceil
+    \frac{r}{\sqrt{2}} \rceil)$ \hfill {\scriptsize
+      Initialise with boundary condition.}
+
+    $C\cdot\textsc{push}((x,y))$\hfill {\scriptsize
+      $(x,y)$ is a tuple.}
+
+    \For(\hfill{\scriptsize Iterate over
+      $x$}){$x\in\{1,\ldots,N\}$}{
+
+      $y\gets y+I[\delta>0]$
+
+      $C\cdot\textsc{push}((x,y))$\hfill {\scriptsize
+        $(x,y)$ is a tuple.}
+
+      $\delta \gets \delta + 2x + 1 +
+      I[\delta>0]\cdot(2y)$
+
+    }
+
+    \Return $C$
+
+  }
+\end{algorithm}
+
+*** midpoint algo for circle octant
+
+\begin{algorithm}[H]
+  \caption{Mid-Point Algorithm for Circle}
+  \DontPrintSemicolon
+
+  \Fn(\hfill {\scriptsize All cases.}){\upshape
+    $\textsc{mid-point-algo-circle}\, (r)$}{
+    \KwIn{$r \in \mathbb{Z} \vdash 0<r$ \hfill
+      \scriptsize Radius of the circle.}
+
+    \KwOut{$C \equiv \{(x_1,y_1),\ldots,(x_N,y_N) \}
+      \subset \mathbb{Z}^2$ \\\scriptsize An ordered
+      sequence; a curve in discrete 2D space.}
+
+    $C\gets\textsc{mid-point-algo-circle}\, (r)$ \hfill
+    {\scriptsize Initialise with octant points.}
+
+    \textbf{define:} $\textsc{quad-sym}\,((x,y))
+    \mapsto [(x,y),(x,-y),(-x,y),(-x,-y)]$
+
+    \textbf{define:}
+    $\textsc{oct-sym}\,((x,y)) \mapsto
+    \textsc{concat}\, (\textsc{quad-sym}\,((x,y)),
+    \textsc{quad-sym}\,((y,x)))$
+
+    $C\gets \textsc{map-concat}\,(\textsc{oct-sym}, C)$
+
+    \Return $C$
+
+  }
+\end{algorithm}
+
+** Ellipse
+
+*** symmetry
+
+#+caption: Rectangular Symmetry
+[[file:images/rect-symmetry.png]]
+
+*** computational efficiency
+[[file:images/2024-09-05-Note-15-30_annotated.png]]
+
+*** signed distance function (sdf) of ellipse
+
+\begin{align*}
+  \frac{x^2}{a^2} + \frac{y^2}{b^2}
+  &= 1
+  \\
+  F(x,y;a,b)
+  &= b^2x^2+z^2y^2-a^2b^2
+\end{align*}
+
+*** point of inflection
+
+\begin{align*}
+  \frac{x^2}{a^2}+\frac{y^2}{b^2}
+  &= 1 \\
+  \frac{2x\mathrm{d}x}{a^2} + \frac{2y\mathrm{d}y}{b^2}
+  &= 0 \\
+  \left.\frac{\mathrm{d}y}{\mathrm{d}x}
+  \right\vert_{\mathbf{p}}
+  = -\frac{b^2x_p}{a^2y_p}
+  &=1 \\
+  x_p
+  &= -\frac{a^2y_p}{b^2} \\
+  &= \pm \frac{a^2}{\sqrt{a^2+b^2}}
+\end{align*}
+
+*** at iteration $t$
+
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: .45
+:END:
+Let point $(x_{t},y_{t})$ be closest to the theoretical
+curve,
+
+*** at iteration $t+1$
+
+\begin{align*}
+  \alert{x_{t+1}}
+  &= x_t+1 \\
+  \alert{y_{t+1}}
+  &=y_t+I[\delta_{t+1}>0]
+  \only<2-5>{ \\
+  \delta_{t+1}
+  &=F(x_t+1,y_t+\frac12) \\
+  &=b^2(x_t+1)^2+a^2(y_t+\frac12)^2-a^2b^2
+    }\only<3-5>{ \\
+  &=b^2x_t^2+2b^2x_t+b^2 + a^2y_t^2 + a^2y_t+a^2 -
+    a^2b^2 
+    }\only<4-5>{ \\
+  \delta_t
+  &= b^2x_t^2+ a^2y_{t-1}^2 + a^2y_{t-1}+a^2 - a^2b^2
+    }\only<5-6>{ \\
+  \delta_{t+1}-\delta_t
+  &= 2b^2x_t+b^2+a^2(y_{t+1}-y_t)(y_{t+1}+y_t+1)
+    } \only<6>{ \\
+  \alert{\delta_{t+1}}
+  &= \delta_t + 2b^2x_t+b^2+I[\delta_t>0]\cdot(2a^2y_t)
+    }
+\end{align*}
+
+*** boundary conditions
+
+at t=1, $x=0, y=-b$
+
+at t=2,
+\begin{align*}
+  \delta_{2}
+  &=F(x_{1}+1,y_{1}+\frac12) \\
+  &=b^2 + a^2(-b+\frac12)^2-a^2b^2 \\
+  &=b^2-a^2b+\frac{a^2}{4}
+\end{align*}
+
+
