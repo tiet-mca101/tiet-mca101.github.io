@@ -1,4 +1,4 @@
-% Created 2024-09-05 Thu 16:04
+% Created 2024-09-05 Thu 18:37
 % Intended LaTeX compiler: pdflatex
 \documentclass[aspectratio=169,xcolor={dvipsnames,svgnames}]{beamer}
 \usepackage[utf8x]{inputenc}
@@ -111,12 +111,12 @@ CSED TIET Patiala India.
 \maketitle
 
 \section{2d geometry --- introduction}
-\label{sec:org34b9b34}
+\label{sec:orgaa5f78e}
 
 \subsection{Straight Lines}
-\label{sec:orged05035}
+\label{sec:org9fbbb1a}
 
-\begin{frame}[label={sec:org733d65e}]{\(y = mx + c\)}
+\begin{frame}[label={sec:org5d59ee3}]{\(y = mx + c\)}
 \begin{align}
   \notag
   y = f(x) &= mx + c
@@ -127,7 +127,7 @@ CSED TIET Patiala India.
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org8ab677f}]{parametric form}
+\begin{frame}[label={sec:orgf417977}]{parametric form}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 For any two vectors \(\mathbf{u},\mathbf{v}\in V\), a
@@ -142,7 +142,7 @@ parameterised by \(t\in[0,1]\), as
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:orgd730408}]{parametric form}
+\begin{frame}[label={sec:org54c3e00}]{parametric form}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 Any point on a line in the direction of unit vector
@@ -158,7 +158,7 @@ point \(\mathbf{p}_0\) may be given parameterised by
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org307fedb}]{hesse normal form}
+\begin{frame}[label={sec:org9f98420}]{hesse normal form}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 \begin{center}
@@ -189,10 +189,10 @@ of all points \(\mathbf{p}\) that satisfy,
 \end{frame}
 
 \subsection{Conics}
-\label{sec:org834d516}
+\label{sec:org508473c}
 
 
-\begin{frame}[label={sec:orgda982ff}]{circle}
+\begin{frame}[label={sec:orgaf002e5}]{circle}
 \begin{columns}
 \begin{column}{.4\columnwidth}
 \begin{figure}[htbp]
@@ -219,7 +219,7 @@ Parametric Form:
 \end{column}
 \end{columns}
 \end{frame}
-\begin{frame}[label={sec:orgec961cc}]{ellipse}
+\begin{frame}[label={sec:org89f1ee1}]{ellipse}
 \begin{columns}
 \begin{column}{.4\columnwidth}
 \begin{figure}[htbp]
@@ -250,12 +250,12 @@ Parametric Form
 
 
 \section{mid-point algorithm}
-\label{sec:orge752ead}
+\label{sec:orge5f46b1}
 
 \subsection{Fundamentals}
-\label{sec:orgc447b4b}
+\label{sec:org718eff1}
 
-\begin{frame}[label={sec:org9f8f923}]{problem}
+\begin{frame}[label={sec:org1936f4e}]{problem}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 In a quantised (pixelated or discrete) 2d plane, find
@@ -265,7 +265,7 @@ curve, say a straight line or a conic.
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org9c03efe}]{method}
+\begin{frame}[label={sec:org1c33f5c}]{method}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 Iteratively, increment along one axes, \\[0pt]
@@ -282,19 +282,19 @@ Increment if required.
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org60caff8}]{example}
+\begin{frame}[label={sec:org2e97cf0}]{example}
 \begin{center}
 \includegraphics[width=0.8\linewidth]{images/basic-midpoint-algo.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orge712280}]{example}
+\begin{frame}[label={sec:org6bc102b}]{example}
 \begin{center}
 \includegraphics[width=\linewidth]{images/0--mid-point-algo_annotated.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org2e1c10c}]{conditions for application of mid-point algorithm}
+\begin{frame}[label={sec:orge40821a}]{conditions for application of mid-point algorithm}
 \begin{columns}
 \begin{column}{.45\columnwidth}
 Mid-point algorithm is applicable to a curve within a
@@ -315,7 +315,7 @@ In other words,
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:orgc442c3c}]{generic algo}
+\begin{frame}[label={sec:orgcb7baa7}]{generic algo}
 \begin{algorithm}[H]
   \caption{Generic Mid-point Algorithm}
   \DontPrintSemicolon
@@ -349,9 +349,9 @@ In other words,
 
 
 \subsection{Straight Line}
-\label{sec:org1dcff0e}
+\label{sec:org06a9bdf}
 
-\begin{frame}[label={sec:org5c9f386}]{characterising straight lines}
+\begin{frame}[label={sec:orgd164dca}]{characterising straight lines}
 \begin{align*}
   F(x,y)
   &= Ax-By+C \\
@@ -372,7 +372,7 @@ In other words,
 \href{https://tiet-mca101.github.io/lectures/images/2024-09-02-Note-08-32\_annotated.pdf}{Read more [\ldots{}]​}
 \end{frame}
 
-\begin{frame}[label={sec:org29b9bf6}]{mid-point algo for st. line}
+\begin{frame}[label={sec:orgc549294}]{mid-point algo for st. line}
 Case 1. \(\alert{0<A<B}\)
 
 \begin{algorithm}[H]
@@ -415,7 +415,7 @@ Case 1. \(\alert{0<A<B}\)
 \end{algorithm}
 \end{frame}
 
-\begin{frame}[label={sec:orgf71d0e7}]{mid-point algo for st. line}
+\begin{frame}[label={sec:org92bb87e}]{mid-point algo for st. line}
 Case 1. \(\alert{0<A<B}\)
 
 \begin{algorithm}[H]
@@ -450,7 +450,7 @@ Case 1. \(\alert{0<A<B}\)
 \end{algorithm}
 \end{frame}
 
-\begin{frame}[label={sec:orgc57e432}]{mid-point algo for st. line}
+\begin{frame}[label={sec:orgc0923d4}]{mid-point algo for st. line}
 Case 1. \(\alert{0<A<B}\)
 
 \begin{algorithm}[H]
@@ -480,7 +480,7 @@ Case 1. \(\alert{0<A<B}\)
 \end{algorithm}
 \end{frame}
 
-\begin{frame}[label={sec:org663e5c8}]{mid-point algo for st. line}
+\begin{frame}[label={sec:org084c660}]{mid-point algo for st. line}
 Handle all cases (Case 2)
 
 \begin{algorithm}[H]
@@ -536,7 +536,7 @@ Handle all cases (Case 2)
 \end{algorithm}
 \end{frame}
 
-\begin{frame}[label={sec:org3646a87}]{mid-point algo for st. line}
+\begin{frame}[label={sec:org60b0956}]{mid-point algo for st. line}
 Handle all cases (Case 3, 4)
 
 \begin{algorithm}[H]
@@ -580,7 +580,7 @@ Handle all cases (Case 3, 4)
 \end{algorithm}
 \end{frame}
 
-\begin{frame}[label={sec:org742139a}]{mid-point algo for st. line}
+\begin{frame}[label={sec:org6fd9892}]{mid-point algo for st. line}
 Handle all cases (Case 1)
 
 \begin{algorithm}[H]
@@ -613,7 +613,7 @@ Handle all cases (Case 1)
 \end{algorithm}
 \end{frame}
 
-\begin{frame}[label={sec:org66ddb30}]{exercise 1}
+\begin{frame}[label={sec:org488ebb4}]{exercise 1}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 Using Bresenham’s/ Mid-point Algorithm, compute the
@@ -628,7 +628,7 @@ points along the following lines, between
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org7fc7ff2}]{solution 1 step 1}
+\begin{frame}[label={sec:orga7ce1df}]{solution 1 step 1}
 For each part, tabulate \(a,b,c,
 x_1,x_{\max},y_1,y_{\max}, a',b',c',
 x_1',x_{\max}',y_1',y_{\max}', N\).
@@ -646,7 +646,7 @@ Part & \(x_1\) & \(y_1\) & \(x_{\max}\) & \(y_{\max}\) & \(a\) & \(b\) & \(c\) &
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orgc464844}]{solution 1 step 2}
+\begin{frame}[label={sec:orge5604dc}]{solution 1 step 2}
 Compute the table of \(x,y,\delta,I[0\leqslant\delta]\)
 for each iteration from \(1\) to \(N\).  Subsequently
 compute \(\textsc{trf}\,(x,y)\).\\[0pt]
@@ -676,7 +676,7 @@ Iteration & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13\\[0pt]
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orgd6ce15b}]{exercise 2 (practical)}
+\begin{frame}[label={sec:org64d72da}]{exercise 2 (practical)}
 \begin{columns}
 \begin{column}{.5\columnwidth}
 \begin{enumerate}
@@ -689,15 +689,15 @@ spreadsheet?
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:orgbc5d11b}]{solution 2}
+\begin{frame}[label={sec:orgc18c899}]{solution 2}
 \centering
 \href{https://docs.google.com/spreadsheets/d/13s1unOAzBQmYA4SF9ifBtw02AEAUlfRTaOvl4m2cbEc/edit?usp=sharing}{[Link to Spreadsheet]​}
 \end{frame}
 \subsection{Circle}
-\label{sec:org3da17fa}
+\label{sec:orgab6726e}
 
 
-\begin{frame}[label={sec:orgc1a5ebb}]{symmetry}
+\begin{frame}[label={sec:orgbd3a5bc}]{symmetry}
 \begin{columns}
 \begin{column}{.45\columnwidth}
 \begin{figure}[htbp]
@@ -709,7 +709,7 @@ spreadsheet?
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:orgd4b4823}]{efficient computation}
+\begin{frame}[label={sec:orga6a893f}]{efficient computation}
 \begin{columns}
 \begin{column}{.45\columnwidth}
 \begin{figure}[htbp]
@@ -740,7 +740,7 @@ are given as,
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org6c4c76d}]{setup}
+\begin{frame}[label={sec:orgdaef755}]{setup}
 \begin{columns}
 \begin{column}{.4\columnwidth}
 \begin{center}
@@ -765,7 +765,7 @@ circle within the octant defined by end points,
 \end{frame}
 
 
-\begin{frame}[label={sec:orgfeed128}]{at iteration \(t\)}
+\begin{frame}[label={sec:org1aff3dd}]{at iteration \(t\)}
 \begin{columns}
 \begin{column}{.4\columnwidth}
 \begin{center}
@@ -784,7 +784,7 @@ closest to the curve given by \(F(x,y)=0\).
 \end{column}
 \end{columns}
 \end{frame}
-\begin{frame}[label={sec:org604fb25}]{at iteration \(t+1\)}
+\begin{frame}[label={sec:org5391a80}]{at iteration \(t+1\)}
 \begin{columns}
 \begin{column}{.4\columnwidth}
 \begin{center}
@@ -820,7 +820,7 @@ closest to the curve given by \(F(x,y)=0\).
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:orge547dc5}]{boundary conditions}
+\begin{frame}[label={sec:orgf1ab005}]{boundary conditions}
 \begin{columns}
 \begin{column}{.3\columnwidth}
 \begin{center}
@@ -848,9 +848,9 @@ closest to the curve given by \(F(x,y)=0\).
 \end{frame}
 
 
-\againframe{sec:orgc442c3c}
+\againframe{sec:orgcb7baa7}
 
-\begin{frame}[label={sec:orgfbb800b}]{midpoint algo for circle octant}
+\begin{frame}[label={sec:org8032ea1}]{midpoint algo for circle octant}
 \begin{algorithm}[H]
   \caption{Mid-Point Algorithm for Circle Octant}
   \DontPrintSemicolon
@@ -893,7 +893,7 @@ closest to the curve given by \(F(x,y)=0\).
 \end{algorithm}
 \end{frame}
 
-\begin{frame}[label={sec:org04a7749}]{midpoint algo for circle octant}
+\begin{frame}[label={sec:orgccddf7c}]{midpoint algo for circle octant}
 \begin{algorithm}[H]
   \caption{Mid-Point Algorithm for Circle}
   \DontPrintSemicolon
@@ -927,9 +927,9 @@ closest to the curve given by \(F(x,y)=0\).
 \end{frame}
 
 \subsection{Ellipse}
-\label{sec:org9295cc9}
+\label{sec:org076b752}
 
-\begin{frame}[label={sec:orgb14800b}]{symmetry}
+\begin{frame}[label={sec:org903343a}]{symmetry}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{images/rect-symmetry.png}
@@ -937,13 +937,13 @@ closest to the curve given by \(F(x,y)=0\).
 \end{figure}
 \end{frame}
 
-\begin{frame}[label={sec:org7874ce1}]{computational efficiency}
+\begin{frame}[label={sec:org9b01c26}]{computational efficiency}
 \begin{center}
 \includegraphics[width=.9\linewidth]{images/2024-09-05-Note-15-30_annotated.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orgd4e0f2c}]{signed distance function (sdf) of ellipse}
+\begin{frame}[label={sec:org134d448}]{signed distance function (sdf) of ellipse}
 \begin{align*}
   \frac{x^2}{a^2} + \frac{y^2}{b^2}
   &= 1
@@ -953,7 +953,7 @@ closest to the curve given by \(F(x,y)=0\).
 \end{align*}
 \end{frame}
 
-\begin{frame}[label={sec:org5053cf7}]{point of inflection}
+\begin{frame}[label={sec:org6dab684}]{point of inflection}
 \begin{align*}
   \frac{x^2}{a^2}+\frac{y^2}{b^2}
   &= 1 \\
@@ -969,7 +969,7 @@ closest to the curve given by \(F(x,y)=0\).
 \end{align*}
 \end{frame}
 
-\begin{frame}[label={sec:orge0711b0}]{at iteration \(t\)}
+\begin{frame}[label={sec:org32d7012}]{at iteration \(t\)}
 \begin{columns}
 \begin{column}{.45\columnwidth}
 Let point \((x_{t},y_{t})\) be closest to the theoretical
@@ -978,7 +978,7 @@ curve,
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org6cc6f0e}]{at iteration \(t+1\)}
+\begin{frame}[label={sec:org070c1e6}]{at iteration \(t+1\)}
 \begin{align*}
   \alert{x_{t+1}}
   &= x_t+1 \\
@@ -1004,7 +1004,7 @@ curve,
 \end{align*}
 \end{frame}
 
-\begin{frame}[label={sec:org527b11f}]{boundary conditions}
+\begin{frame}[label={sec:org0f8dc4d}]{boundary conditions}
 at t=1, \(x=0, y=-b\)
 
 at t=2,
@@ -1014,5 +1014,103 @@ at t=2,
   &=b^2 + a^2(-b+\frac12)^2-a^2b^2 \\
   &=b^2-a^2b+\frac{a^2}{4}
 \end{align*}
+\end{frame}
+
+
+\begin{frame}[label={sec:orgd3fcb15}]{putting it all together}
+\begin{align*}
+  x_1&=0 \\
+  y_1&=-b \\
+  \delta_{2}&=b^2-a^2b+\frac{a^2}{4} \\
+  N &= \frac{a^2}{\sqrt{a^2+b^2}} \\
+  x_{t+1} &= x_t+1 \\
+  y_{t+1} &= y_t+I[\delta_{t+1}>0] \\
+  \delta_{t+1} &= \delta_t + 2b^2x_t+b^2 +
+                 I[\delta_t>0]\cdot(2a^2y_t)
+\end{align*}
+\end{frame}
+
+\begin{frame}[label={sec:org5d4716c}]{midpoint algorithm for ellipse}
+\begin{algorithm}[H]
+  \caption{Mid Point Algorithm for Ellispe (BottomRight)}
+  \DontPrintSemicolon
+
+  \Fn(\hfill {\scriptsize Base Case.}){\upshape
+    $\textsc{mid-point-algo-ellipse-br}\, (a,b)$}{
+    \KwIn{$a,b \in \mathbb{Z} \vdash 0<a,b$ \hfill
+      \scriptsize Semi-axes-lengths of the ellipse.}
+
+    \KwOut{$C \equiv \{(x_1,y_1),\ldots,(x_N,y_N) \}
+      \subset \mathbb{Z}^2$ \\\scriptsize An ordered
+      sequence; a curve in discrete 2D space.}
+
+    $C\gets\emptyset$
+
+    $(x,y,\delta)\gets(0,-b,b^2-a^2b +
+    \lceil\frac{a^2}{4}\rceil)$
+
+    $C\cdot\textsc{push}((x,y))$
+
+    $N\gets \lceil\frac{a^2}{\sqrt{a^2+b^2}}\rceil$
+
+    \For(\hfill{\scriptsize Iterate along the x-axis.})
+    {$x\in\{1,\ldots,N\}$} {
+
+      $y\gets y+I[\delta>0]$
+      
+      $C\cdot\textsc{push}((x,y))$
+
+      $\delta\gets \delta + 2b^2x+b^2 +
+      I[\delta>0]\cdot(2a^2y)$
+
+    }
+
+    \Return $C$.
+
+  }    
+\end{algorithm}
+\end{frame}
+
+\begin{frame}[label={sec:org7152516}]{midpoint algorithm for ellipse}
+\begin{algorithm}[H]
+  \caption{Mid Point Algorithm for Ellispe (Collect
+    Symmetric Points)}
+  \DontPrintSemicolon
+
+  \Fn(\hfill {\scriptsize All cases.}){\upshape
+    $\textsc{mid-point-algo-ellipse}\, (a,b)$}{
+    \KwIn{$a,b \in \mathbb{Z} \vdash 0<a,b$ \hfill
+      \scriptsize Semi-axes-lengths of the ellipse.}
+
+    \KwOut{$C \equiv \{(x_1,y_1),\ldots,(x_N,y_N) \}
+      \subset \mathbb{Z}^2$ \\\scriptsize An ordered
+      sequence; a curve in discrete 2D space.}
+
+    $C_1\gets\textsc{mid-point-algo-ellipse-br}\, (a,b)$
+    \hfill {\scriptsize Collect Bottom Right For (a,b)}
+
+    \textbf{define:}  $\textsc{quad-sym}:((x,y))
+    \mapsto [(x,y), (x,-y), (-x,y), (-x,-y)]$
+
+    $C_1\gets\textsc{map-concat}(\textsc{quad-sym},C_1)$
+    \hfill {\scriptsize Collect \textsc{quad-sym} for
+      $C_1$.}
+
+    $C_2\gets\textsc{mid-point-algo-ellipse-br}\, (b,a)$
+    \hfill {\scriptsize Collect Bottom Right For (b,a)}
+
+    \textbf{define:}  $\textsc{quad-sym-flip}:((x,y))
+    \mapsto \textsc{quad-sym}((y,x))$
+
+    $C_2\gets\textsc{map-concat}(\textsc{quad-sym-flip},C_2)$
+    \hfill {\scriptsize Collect flipped
+      \textsc{quad-sym} for $C_2$.}
+
+    $C\gets\textsc{concat}(C_1, C_2)$
+
+    \Return $C$.
+
+  }    
+\end{algorithm}
 \end{frame}
 \end{document}

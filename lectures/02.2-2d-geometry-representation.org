@@ -1010,3 +1010,101 @@ at t=2,
 \end{align*}
 
 
+*** putting it all together
+
+\begin{align*}
+  x_1&=0 \\
+  y_1&=-b \\
+  \delta_{2}&=b^2-a^2b+\frac{a^2}{4} \\
+  N &= \frac{a^2}{\sqrt{a^2+b^2}} \\
+  x_{t+1} &= x_t+1 \\
+  y_{t+1} &= y_t+I[\delta_{t+1}>0] \\
+  \delta_{t+1} &= \delta_t + 2b^2x_t+b^2 +
+                 I[\delta_t>0]\cdot(2a^2y_t)
+\end{align*}
+
+*** midpoint algorithm for ellipse
+
+# \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\begin{algorithm}[H]
+  \caption{Mid Point Algorithm for Ellispe (BottomRight)}
+  \DontPrintSemicolon
+
+  \Fn(\hfill {\scriptsize Base Case.}){\upshape
+    $\textsc{mid-point-algo-ellipse-br}\, (a,b)$}{
+    \KwIn{$a,b \in \mathbb{Z} \vdash 0<a,b$ \hfill
+      \scriptsize Semi-axes-lengths of the ellipse.}
+
+    \KwOut{$C \equiv \{(x_1,y_1),\ldots,(x_N,y_N) \}
+      \subset \mathbb{Z}^2$ \\\scriptsize An ordered
+      sequence; a curve in discrete 2D space.}
+
+    $C\gets\emptyset$
+
+    $(x,y,\delta)\gets(0,-b,b^2-a^2b +
+    \lceil\frac{a^2}{4}\rceil)$
+
+    $C\cdot\textsc{push}((x,y))$
+
+    $N\gets \lceil\frac{a^2}{\sqrt{a^2+b^2}}\rceil$
+
+    \For(\hfill{\scriptsize Iterate along the x-axis.})
+    {$x\in\{1,\ldots,N\}$} {
+
+      $y\gets y+I[\delta>0]$
+      
+      $C\cdot\textsc{push}((x,y))$
+
+      $\delta\gets \delta + 2b^2x+b^2 +
+      I[\delta>0]\cdot(2a^2y)$
+
+    }
+
+    \Return $C$.
+
+  }    
+\end{algorithm}
+
+*** midpoint algorithm for ellipse
+
+# \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\begin{algorithm}[H]
+  \caption{Mid Point Algorithm for Ellispe (Collect
+    Symmetric Points)}
+  \DontPrintSemicolon
+
+  \Fn(\hfill {\scriptsize All cases.}){\upshape
+    $\textsc{mid-point-algo-ellipse}\, (a,b)$}{
+    \KwIn{$a,b \in \mathbb{Z} \vdash 0<a,b$ \hfill
+      \scriptsize Semi-axes-lengths of the ellipse.}
+
+    \KwOut{$C \equiv \{(x_1,y_1),\ldots,(x_N,y_N) \}
+      \subset \mathbb{Z}^2$ \\\scriptsize An ordered
+      sequence; a curve in discrete 2D space.}
+
+    $C_1\gets\textsc{mid-point-algo-ellipse-br}\, (a,b)$
+    \hfill {\scriptsize Collect Bottom Right For (a,b)}
+
+    \textbf{define:}  $\textsc{quad-sym}:((x,y))
+    \mapsto [(x,y), (x,-y), (-x,y), (-x,-y)]$
+
+    $C_1\gets\textsc{map-concat}(\textsc{quad-sym},C_1)$
+    \hfill {\scriptsize Collect \textsc{quad-sym} for
+      $C_1$.}
+
+    $C_2\gets\textsc{mid-point-algo-ellipse-br}\, (b,a)$
+    \hfill {\scriptsize Collect Bottom Right For (b,a)}
+
+    \textbf{define:}  $\textsc{quad-sym-flip}:((x,y))
+    \mapsto \textsc{quad-sym}((y,x))$
+
+    $C_2\gets\textsc{map-concat}(\textsc{quad-sym-flip},C_2)$
+    \hfill {\scriptsize Collect flipped
+      \textsc{quad-sym} for $C_2$.}
+
+    $C\gets\textsc{concat}(C_1, C_2)$
+
+    \Return $C$.
+
+  }    
+\end{algorithm}
